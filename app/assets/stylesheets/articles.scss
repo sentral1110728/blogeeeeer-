@@ -1,0 +1,79 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  margin:0;
+  padding:0;
+}
+h2{
+  margin: 0;
+}
+p{
+  margin: 0px;
+}
+.header{
+  background-color: #790604;
+  height: 80px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.container{
+  width:100%;
+  min-height: calc(100vh - 160px);
+  background-color: #f6f6f4;
+  padding-top:40px;
+  padding-bottom:40px;
+}
+.container-main{
+  background-color: white;
+  width: 80%;
+  margin: auto;
+}
+.articles{
+  width: 100%;
+  height:100%;
+}
+.article{
+  height: 70px;
+  border-bottom:1px solid #EEEEEE;
+  display:flex;
+  padding:10px;
+  &__user__image{
+    width: 70px;
+    height: 70px;
+  }
+}
+.article:hover{
+  background-color: #FFEEFF;
+}
+.article-content{
+  padding-left:20px;
+  padding-top: 5px;
+  position: relative;
+  &__title{
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+  }
+  &__title:hover{
+    border-bottom: 1px solid black;
+  }
+  &__option{
+    position: absolute;
+    bottom:0;
+    display: flex;
+    color:#BBBBBB;
+    &__user-name{
+      text-decoration: none;
+      color:#BBBBBB;
+    }
+    &__user-name:hover{
+      border-bottom: 1px solid #BBBBBB;
+    }
+    &__created-at{
+      padding-left: 10px;
+    }
+  }
+}
