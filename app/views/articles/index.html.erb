@@ -1,31 +1,25 @@
-<html>
-  <head>
-    <title>ホーム</title>
-    <link rel="stylesheet"type="text/css" href="index.css">
-  </head>
-  <body>
-    <div class="header">
-      <h2>appilcation</h2>
-    </div>
-    <div class="container">
-      <div class="container-main">
-        <div class="articles">
-          <% @articles.each do |art| %>
-            <div class="article">
-              <div class="article__user">
-                <img class="article__user__image">
-              </div>
-              <div class="article-content">
-                <a class="article-content__title" href="#"><%= art.title %></a>
-                <div class="article-content__option">
-                  <a class="article-content__option__user-name" href="#">user_name</a>
-                  <span class="article-content__option__created-at"><%= art.created_at %></span>
-                </div>
-              </div>
+
+<div class="header">
+  <h2>appilcation</h2>
+  <%= link_to "新規作成", new_article_path, class: "new_article" %>
+</div>
+<div class="container">
+  <div class="container-main">
+    <div class="articles">
+      <% @articles.each do |art| %>
+        <div class="article">
+          <div class="article__user">
+            <img class="article__user__image">
+          </div>
+          <div class="article-content">
+            <a class="article-content__title" href="#"><%= art.title %></a>
+            <div class="article-content__option">
+              <a class="article-content__option__user-name" href="#">user_name</a>
+              <span class="article-content__option__created-at"><%= art.created_at %></span>
             </div>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  </body>
-</html> 
+  </div>
+</div>

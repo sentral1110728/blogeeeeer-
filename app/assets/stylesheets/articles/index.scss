@@ -18,6 +18,7 @@ p{
   justify-content: center;
   align-items: center;
   color: white;
+  position: relative;
 }
 .container{
   width:100%;
@@ -76,4 +77,14 @@ p{
       padding-left: 10px;
     }
   }
+}
+
+.new_article{
+  color: white;
+  text-decoration: none;
+  position: absolute;
+  right: 10px;
+}
+.new_article:hover{
+  border-bottom: 1px white solid;
 }

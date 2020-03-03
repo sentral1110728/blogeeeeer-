@@ -3,14 +3,14 @@
 </div>
 <div class="container">
   <div class="container-main">
-    <form>
+    <%= form_with model: @new_article do |f| %>
       <div>
-        <input class="input-title-field" type="text" placeholder="タイトルを入力">
+        <%= f.text_field :title, placeholder: :titleの入力, class: :input_title_field %>
       </div>
-      <textarea class="input-content-field" placeholder="内容の入力"></textarea>
-      <div class="btn-field">
-        <input type="submit" class="send" value="作成">
+      <%= f.text_area :content, placeholder: :"内容の入力", class: :input_content_field %>
+      <div class="btn_field">
+        <%= f.submit "作成", class: :send %>
       </div>
-    </form>
+    <% end %>
   </div>
 </div>
