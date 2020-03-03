@@ -10,18 +10,20 @@
     <div class="container">
       <div class="container-main">
         <div class="articles">
-          <div class="article">
-            <div class="article__user">
-              <img class="article__user__image">
-            </div>
-            <div class="article-content">
-              <a class="article-content__title" href="#">title</a>
-              <div class="article-content__option">
-                <a class="article-content__option__user-name" href="#">user_name</a>
-                <span class="article-content__option__created-at">2020/02/10</span>
+          <% @articles.each do |art| %>
+            <div class="article">
+              <div class="article__user">
+                <img class="article__user__image">
+              </div>
+              <div class="article-content">
+                <a class="article-content__title" href="#"><%= art.title %></a>
+                <div class="article-content__option">
+                  <a class="article-content__option__user-name" href="#">user_name</a>
+                  <span class="article-content__option__created-at"><%= art.created_at %></span>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
