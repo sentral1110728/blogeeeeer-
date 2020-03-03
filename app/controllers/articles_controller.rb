@@ -22,6 +22,10 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def edit
+    @edit_article = Article.find(params[:id])
+  end
+
   private
   def article_params
     params.require(:article).permit(:title, :content)

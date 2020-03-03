@@ -1,0 +1,16 @@
+<div class="header">
+  <h2>appilcation</h2>
+</div>
+<div class="container">
+  <div class="container-main">
+    <%= form_with model: @edit_article do |f| %>
+      <div>
+        <%= f.text_field :title, placeholder: :titleの入力, class: :input_title_field %>
+      </div>
+      <%= f.text_area :content, placeholder: :"内容の入力", class: :input_content_field %>
+      <div class="btn_field">
+        <%= f.submit "更新", class: :send %>
+      </div>
+    <% end %>
+  </div>
+</div>
