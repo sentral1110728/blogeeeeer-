@@ -12,7 +12,7 @@
             <img class="article__user__image">
           </div>
           <div class="article-content">
-            <a class="article-content__title" href="#"><%= art.title %></a>
+            <%= link_to art.title, article_path(art.id), class: "article-content__title" %>
             <div class="article-content__option">
               <a class="article-content__option__user-name" href="#">user_name</a>
               <span class="article-content__option__created-at"><%= art.created_at %></span>
