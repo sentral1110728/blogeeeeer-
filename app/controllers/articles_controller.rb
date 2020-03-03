@@ -4,5 +4,16 @@ class ArticlesController < ApplicationController
   end
   
   def new
+    @new_article = Article.new
+  end
+
+  def create
+    @article = Article.create(article_params)
+    redirect_to articles_path
+  end
+
+  private
+  def article_params
+    params.require(:article).permit(:title, :content)
   end
 end
