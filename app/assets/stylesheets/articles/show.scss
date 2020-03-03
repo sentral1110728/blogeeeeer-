@@ -1,0 +1,25 @@
+.article_header{
+  text-align: center;
+  padding: 20px 0;
+  border-bottom:1px solid gray;
+  position: relative;
+}
+.article_content{
+  padding-top: 100px;
+  font-size:20px;
+}
+.option{
+  position: absolute;
+  right:0;
+  top:0;
+  font-size:13px;
+  color: gray;
+}
+.article_edit:hover{
+  color: black;
+  cursor: pointer;
+}
+.article_delete:hover{
+  color: black;
+  cursor: pointer;
+}
