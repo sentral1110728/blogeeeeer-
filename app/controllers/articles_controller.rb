@@ -14,6 +14,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @new_comment = Comment.new
+    @comments = @article.comments.includes(:user)
   end
 
   def destroy
