@@ -6,21 +6,25 @@
     <div class="article_header">
       <h1 class="article_title"><%= @article.title %></h1>
       <div class="option">
-        <% if current_user.id == @article.user_id %>
-          <%= link_to "編集", edit_article_path, class: "article_edit" %>
-          <%= link_to "削除", article_path, class: "article_delete", method: :delete %>
+        <% if user_signed_in? %>
+          <% if current_user.id == @article.user_id %>
+            <%= link_to "編集", edit_article_path, class: "article_edit" %>
+            <%= link_to "削除", article_path, class: "article_delete", method: :delete %>
+          <% end %>
         <% end %>
       </div>
     </div>
     <div class="article_content">
       <%= @article.content %>
     </div>
-    <div class="new_comment_field" style="padding-top:100px;">
-      <%= form_with(model: [@article, @new_comment]) do |f| %>
-        <%= f.text_area :comment, class: "comment_input", placeholer: "コメントを入力してください" %>
-        <%= f.submit "送信", class: "comment_send" %>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="new_comment_field" style="padding-top:100px;">
+        <%= form_with(model: [@article, @new_comment]) do |f| %>
+          <%= f.text_area :comment, class: "comment_input", placeholer: "コメントを入力してください" %>
+          <%= f.submit "送信", class: "comment_send" %>
+        <% end %>
+      </div>
+    <% end %>
     <% if @comments.length > 0 %>
       <div class="comments_field" style="padding-top:80px;">
         コメント一覧
