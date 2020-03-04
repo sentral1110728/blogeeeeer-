@@ -1,0 +1,40 @@
+.login_container{
+  display: flex;
+  justify-content: center;
+  background-color: #790604;
+  height: 100vh;
+}
+.login_container_main{
+  width: 60%;
+  margin: 40px 0;
+  background-color: white;
+}
+.page_title{
+  text-align: center;
+  padding: 30px 0;
+}
+.email_field{
+  height: 30px;
+  width: 80%;
+  border-radius: 3px;
+}
+.password_field{
+  height: 30px;
+  width: 80%;
+  border-radius: 3px;
+}
+.field{
+  text-align: center;
+  margin: 30px 0;
+}
+.actions{
+  text-align: center;
+}
+.login_btn{
+  border-radius: 3px;
+
+}
+.link{
+  text-decoration: none;
+  color: gray;
+}

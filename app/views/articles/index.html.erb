@@ -1,7 +1,12 @@
 
 <div class="header">
-  <h2>appilcation</h2>
-  <%= link_to "新規作成", new_article_path, class: "new_article" %>
+  <h2><%= link_to "appilcation", articles_path, class: "app_title" %></h2>
+  <% if user_signed_in? %>
+    <%= link_to "ログアウト", destroy_user_session_path, class: "new_account", method: :delete %>
+    <%= link_to "新規作成", new_article_path, class: "new_article" %>
+  <% else%>
+    <%= link_to "ログイン", new_user_session_path, class: "new_account" %>
+  <% end %>
 </div>
 <div class="container">
   <div class="container-main">
