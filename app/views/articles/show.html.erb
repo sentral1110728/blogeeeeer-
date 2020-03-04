@@ -6,8 +6,10 @@
     <div class="article_header">
       <h1 class="article_title"><%= @article.title %></h1>
       <div class="option">
-        <%= link_to "編集", edit_article_path, class: "article_edit" %>
-        <%= link_to "削除", article_path, class: "article_delete", method: :delete %>
+        <% if current_user.id == @article.user_id %>
+          <%= link_to "編集", edit_article_path, class: "article_edit" %>
+          <%= link_to "削除", article_path, class: "article_delete", method: :delete %>
+        <% end %>
       </div>
     </div>
     <div class="article_content">
