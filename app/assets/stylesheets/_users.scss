@@ -32,35 +32,49 @@
 }
 .login_btn{
   border-radius: 3px;
-
+}
+.signin_btn{
+  border-radius: 3px;
 }
 .link{
   text-decoration: none;
   color: gray;
+  display: block;
 }
 
 
 
 .user_page{
-  background-color:#790604;display:flex;justify-content:center;
+  background-color: #790604;
+  display: flex;
+  justify-content: center;
 }
 .user_show_main{
-  background-color:white;height:100vh;width:80%;
+  background-color: white;
+  height: 100vh;
+  width: 80%;
 }
 .user_image_field{
-  display:flex;justify-content:center;padding-top:30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
 }
-.user_image{
-  width:300px;height:300px;border:1px solid black;
+.user_show_image{
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
 }
 .user_name{
-  font-size:30px;text-align:center;padding-top:30px;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 30px;
 }
 .user_pr_field{
   margin: 30px 30px;
 }
 .user_pr_title{
-  background-color:#EEEEEE;text-align:center;
+  background-color: #EEEEEE;
+  text-align: center;
 }
 .user_pr_content{
   padding:30px 40px 0;

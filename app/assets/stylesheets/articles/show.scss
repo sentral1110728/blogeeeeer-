@@ -22,7 +22,7 @@
 .option{
   position: absolute;
   right:0;
-  top:0;
+  top:10px;
   font-size:13px;
   color: gray;
 }
@@ -75,4 +75,13 @@
 }
 .comment_body{
   padding: 0 20px 20px 20px;
+}
+.no_comment_msg{
+  padding: 80px 30px 0;
+}
+.text_label{
+  color: gray;
+}
+.comment_user_name{
+  padding-left: 10px;
 }
