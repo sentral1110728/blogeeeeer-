@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :articles
   has_many :comments
+  has_one :profile
+  accepts_nested_attributes_for :profile
 end
