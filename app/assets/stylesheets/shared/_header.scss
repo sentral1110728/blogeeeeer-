@@ -1,0 +1,41 @@
+$base_color: #790604;
+.header{
+  background-color: $base_color;
+  height: 80px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  &__app_title{
+    color: white;
+    text-decoration: none;
+  }
+  &__new_article{
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    right: 100px;
+  }
+  &__new_account{
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    right: 10px;
+  }
+  &__my_page{
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    right: 180px;
+  }
+  &__new_article:hover{
+    border-bottom: 1px white solid;
+  }
+  &__new_account:hover{
+    border-bottom: 1px white solid;
+  }
+  &__my_page:hover{
+    border-bottom: 1px white solid;
+  }
+}

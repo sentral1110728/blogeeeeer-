@@ -1,17 +1,28 @@
+.container_show{
+  width:100%;
+  padding:40px 0;
+  background-color: #EEEEEE;
+}
+.container_show_main{
+  background-color: white;
+  width: 80%;
+  margin: auto;
+}
 .article_header{
   text-align: center;
   padding: 20px 0;
+  margin: 20px 30px;
   border-bottom:1px solid gray;
   position: relative;
 }
-.article_content{
-  padding-top: 100px;
+.article_text_content{
+  padding: 100px 30px;
   font-size:20px;
 }
 .option{
   position: absolute;
   right:0;
-  top:0;
+  top:10px;
   font-size:13px;
   color: gray;
 }
@@ -35,4 +46,42 @@
   height: 60px;
   width: 100%;
   resize: none;
+}
+.new_comment_field{
+  padding: 50px 30px;
+}
+.container_comment{
+  background-color: white;
+  width: 80%;
+  margin: 40px auto 0;
+  padding-bottom: 40px;
+}
+.comments_field{
+  padding: 30px 30px 0;
+}
+.comment{
+  border: 1px solid gray;
+  margin-top: 10px;
+}
+.user_field{
+  display: flex;
+  padding: 10px 20px;
+  background-color: #EEEEEE;
+}
+.user_image{
+  height: 30px;
+  width: 30px;
+  border: 1px solid black;
+}
+.comment_body{
+  padding: 0 20px 20px 20px;
+}
+.no_comment_msg{
+  padding: 80px 30px 0;
+}
+.text_label{
+  color: gray;
+}
+.comment_user_name{
+  padding-left: 10px;
 }

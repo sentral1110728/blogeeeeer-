@@ -1,6 +1,8 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$base_color: #790604;
+
 body{
   margin:0;
   padding:0;
@@ -11,29 +13,24 @@ h2{
 p{
   margin: 0px;
 }
-.header{
-  background-color: #790604;
-  height: 80px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  position: relative;
-}
+
 .container{
   width:100%;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 120px);
   padding-top:40px;
-  padding-bottom:40px;
+  background-color: #EEEEEE;
 }
-.container-main{
+.container_main{
   background-color: white;
   width: 80%;
+  min-height: calc(100vh - 120px);
   margin: auto;
 }
 .articles{
   width: 100%;
   height:100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 .article{
   height: 70px;
@@ -48,7 +45,7 @@ p{
 .article:hover{
   background-color: #FFEEFF;
 }
-.article-content{
+.article_content{
   width: 100%;
   padding-left:20px;
   padding-top: 5px;
@@ -65,39 +62,17 @@ p{
     position: absolute;
     bottom:0;
     display: flex;
+    font-size: 15px;
     color:#BBBBBB;
-    &__user-name{
+    &__user_name{
       text-decoration: none;
       color:#BBBBBB;
     }
-    &__user-name:hover{
+    &__user_name:hover{
       border-bottom: 1px solid #BBBBBB;
     }
-    &__created-at{
+    &__created_at{
       padding-left: 10px;
     }
   }
-}
-
-.new_article{
-  color: white;
-  text-decoration: none;
-  position: absolute;
-  right: 100px;
-}
-.new_article:hover{
-  border-bottom: 1px white solid;
-}
-.new_account{
-  color: white;
-  text-decoration: none;
-  position: absolute;
-  right: 10px;
-}
-.new_account:hover{
-  border-bottom: 1px white solid;
-}
-.app_title{
-  color: white;
-  text-decoration: none;
 }

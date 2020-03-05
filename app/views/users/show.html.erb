@@ -1,16 +1,8 @@
-<div class="header">
-  <h2><%= link_to "appilcation", articles_path, class: "app_title" %></h2>
-  <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, class: "new_account", method: :delete %>
-    <%= link_to "新規作成", new_article_path, class: "new_article" %>
-  <% else%>
-    <%= link_to "ログイン", new_user_session_path, class: "new_account" %>
-  <% end %>
-</div>
+<%= render 'shared/header' %>
 <div class="user_page">
   <div class="user_show_main">
     <div class="user_image_field">
-      <img class="user_image" src="#">
+      <img class="user_show_image" src="#">
     </div>
     <div class="user_name">user_name</div>
     <div class="user_pr_field">
