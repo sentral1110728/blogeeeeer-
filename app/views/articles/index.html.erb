@@ -8,7 +8,7 @@
             <img class="article__user__image">
           </div>
           <div class="article-content">
-            <%= link_to art.title, article_path(art.id), class: "article-content__title" %>
+            <%= link_to "#{art.title}", article_path(art.id), class: "article-content__title" %>
             <div class="article-content__option">
               <%= link_to "#{art.user.nickname}", user_path(art.user_id), class: "article-content__option__user-name" %>
               <span class="article-content__option__created-at"><%= art.created_at %></span>
