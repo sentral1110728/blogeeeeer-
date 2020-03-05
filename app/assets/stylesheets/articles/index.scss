@@ -101,3 +101,12 @@ p{
   color: white;
   text-decoration: none;
 }
+.my_page{
+  color: white;
+  text-decoration: none;
+  position: absolute;
+  right: 180px;
+}
+.my_page:hover{
+  border-bottom: 1px white solid;
+}
