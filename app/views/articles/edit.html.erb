@@ -1,15 +1,13 @@
-<div class="header">
-  <h2>appilcation</h2>
-</div>
+<%= render 'shared/header' %>
 <div class="container">
-  <div class="container-main">
+  <div class="container_main">
     <%= form_with model: @edit_article do |f| %>
-      <div>
-        <%= f.text_field :title, placeholder: :titleの入力, class: :input_title_field %>
+      <div class="container_main__new_article_field">
+        <%= f.text_field :title, placeholder: "titleの入力", class: "container_main__new_article_field__input_title_field" %>
+        <%= f.text_area :content, placeholder: "内容の入力", class: "container_main__new_article_field__input_content_field" %>
       </div>
-      <%= f.text_area :content, placeholder: :"内容の入力", class: :input_content_field %>
-      <div class="btn_field">
-        <%= f.submit "更新", class: :send %>
+      <div class="container_main__btn_field">
+        <%= f.submit "更新", class: "container_main__btn_field__send" %>
       </div>
     <% end %>
   </div>

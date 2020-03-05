@@ -14,5 +14,7 @@
  *= require_self
  */
 
- //リセットcss
  @import "./normalize";
+ @import "./shared/header";
+ @import "./articles/index";
+ @import "./articles/new";

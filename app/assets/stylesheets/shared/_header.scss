@@ -1,5 +1,6 @@
+$base_color: #790604;
 .header{
-  background-color: #790604;
+  background-color: $base_color;
   height: 80px;
   display:flex;
   justify-content: center;
