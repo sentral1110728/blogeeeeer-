@@ -11,15 +11,7 @@ h2{
 p{
   margin: 0px;
 }
-.header{
-  background-color: #790604;
-  height: 80px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  position: relative;
-}
+
 .container{
   width:100%;
   min-height: calc(100vh - 160px);
@@ -77,36 +69,4 @@ p{
       padding-left: 10px;
     }
   }
-}
-
-.new_article{
-  color: white;
-  text-decoration: none;
-  position: absolute;
-  right: 100px;
-}
-.new_article:hover{
-  border-bottom: 1px white solid;
-}
-.new_account{
-  color: white;
-  text-decoration: none;
-  position: absolute;
-  right: 10px;
-}
-.new_account:hover{
-  border-bottom: 1px white solid;
-}
-.app_title{
-  color: white;
-  text-decoration: none;
-}
-.my_page{
-  color: white;
-  text-decoration: none;
-  position: absolute;
-  right: 180px;
-}
-.my_page:hover{
-  border-bottom: 1px white solid;
 }

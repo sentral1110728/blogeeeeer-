@@ -10,7 +10,6 @@
           <div class="article-content">
             <%= link_to art.title, article_path(art.id), class: "article-content__title" %>
             <div class="article-content__option">
-              <%# <a class="article-content__option__user-name" href="#">user_name</a> %>
               <%= link_to "#{art.user.nickname}", user_path(art.user_id), class: "article-content__option__user-name" %>
               <span class="article-content__option__created-at"><%= art.created_at %></span>
             </div>
