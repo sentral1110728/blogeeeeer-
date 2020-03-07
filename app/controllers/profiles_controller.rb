@@ -6,12 +6,19 @@ class ProfilesController < ApplicationController
 
   def update
     edited_profile = Profile.find(params[:id])
-    edited_profile.update(profile_params)
+    ActiveRecord::Base.transaction do
+      edited_profile.update(profile_params)
+      edited_profile.user.update(nickname: params[:profile][:user][:nickname])
+    end
     redirect_to user_path(edited_profile.user_id)
   end
 
   private
   def profile_params
     params.require(:profile).permit(:appeal, :user_image)
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname)
   end
 end

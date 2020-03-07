@@ -1,22 +1,25 @@
 <%= render 'shared/header' %>
 <div class="user_page">
   <div class="user_show_main">
-    <%= form_with model: @profile,:url => {:action => :update} do |f| %>
+    <%= form_with model: @profile, :url => {:action => :update} do |f| %>
       <div class="user_image_field">
-        <img class="user_show_image" src="#">
+        <div style="text-align:center;">
+          <img class="user_show_image" src="#">
+          <%= f.file_field :user_image, class: "user_image_upload" %>
+        </div>
+        <%= f.fields_for @user do |u| %>
+          <div class="user_nickname_field">
+            <%= f.label :nickname, value: "ニックネーム", class: "user_nickname_label" %><br />
+            <%= u.text_field :nickname, placeholder: "ニックネームの入力", class: "user_nickname" %>
+          </div>
+        <% end %> 
       </div>
-      <div style="text-align:center;">
-        <%= f.file_field :user_image %>
-      </div>
-      <div class="user_name"><%= @user.nickname %></div>
       <div class="user_pr_field" style="margin-bottom:0;">
         <div class="user_pr_title">自己紹介</div>
-        <%# <textarea style="height:200px;width:100%;margin-top:30px;"></textarea> %>
-        <%= f.text_area :appeal %>
+        <%= f.text_area :appeal, class: "appeal_field" %>
       </div>
       <div style="text-align:center;">
-        <%# <input type="submit" style="border-radius:3px;text-align:center;" value="更新"> %>
-        <%= f.submit '更新' %>
+        <%= f.submit '更新', class: "send_btn" %>
       </div>
     <% end %>
   </div>
