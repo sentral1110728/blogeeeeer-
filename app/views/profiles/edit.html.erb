@@ -1,1 +1,18 @@
-HEllo
+<%= render 'shared/header' %>
+<div class="user_page">
+  <div class="user_show_main">
+    <form>
+      <div class="user_image_field">
+        <img class="user_show_image" src="#">
+      </div>
+      <div class="user_name"><%= @user.nickname %></div>
+      <div class="user_pr_field" style="margin-bottom:0;">
+        <div class="user_pr_title">自己紹介</div>
+        <textarea style="height:200px;width:100%;margin-top:30px;"></textarea>
+      </div>
+      <div style="text-align:center;">
+        <input type="submit" style="border-radius:3px;text-align:center;" value="更新">
+      </div>
+    </form>
+  </div>
+</div>
