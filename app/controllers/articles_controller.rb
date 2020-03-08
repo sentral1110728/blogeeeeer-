@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.includes([user: :profile])
+    @articles = Article.includes([user: :profile]).paginate(page: params[:page], per_page: 5)
   end
   
   def new
