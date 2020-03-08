@@ -2,12 +2,15 @@
 <div class="user_page">
   <div class="user_show_main">
     <div class="user_image_field">
-      <img class="user_show_image" src="#">
+      <%= image_tag @user_profile.user_image.url %>
+      <% if current_user.id == @user.id %>
+        <%= link_to "編集", edit_user_profile_path(@user.id, @user_profile.id) %>
+      <% end %>
     </div>
-    <div class="user_name">user_name</div>
+    <div class="user_name"><%= @user.nickname %></div>
     <div class="user_pr_field">
       <div class="user_pr_title">自己紹介</div>
-      <p class="user_pr_content">こんにちは</p>
+      <p class="user_pr_content"><%= @user_profile.appeal %></p>
     </div>
   </div>
 </div>

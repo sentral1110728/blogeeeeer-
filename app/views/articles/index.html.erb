@@ -5,7 +5,11 @@
       <% @articles.each do |art| %>
         <div class="article">
           <div class="article__user">
-            <img class="article__user__image">
+            <% if art.user.profile.user_image.present? %>
+              <%= image_tag art.user.profile.user_image.url, class: "article__user__image" %>
+            <% else %>
+              <img class="article__user__image">
+            <% end %>
           </div>
           <div class="article_content">
             <%= link_to "#{art.title}", article_path(art.id), class: "article_content__title" %>
