@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.includes(:user)
+    @articles = Article.includes([user: :profile])
   end
   
   def new

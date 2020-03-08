@@ -4,7 +4,7 @@
     <%= form_with model: @profile, :url => {:action => :update} do |f| %>
       <div class="user_image_field">
         <div style="text-align:center;">
-          <img class="user_show_image" src="#">
+          <%= image_tag @profile.user_image.url %>
           <%= f.file_field :user_image, class: "user_image_upload" %>
         </div>
         <%= f.fields_for @user do |u| %>
