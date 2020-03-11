@@ -8,8 +8,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article_params)
-    redirect_to articles_path
+    # @article = Article.new(article_params)
+    @article = Article.new(article_params)
+    if @article.save
+      redirect_to articles_path, notice: '記事を投稿しました'
+    else
+      redirect_to new_article_path
+    end
   end
 
   def show
