@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+  #指定したアクションはログインしてないと利用できない(ログイン画面に遷移される)
+  before_action :authenticate_user!, only: [:edit, :update]
+
   def edit
     @user = User.find(params[:user_id])
     @profile = User.find(params[:user_id]).profile
