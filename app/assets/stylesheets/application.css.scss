@@ -20,3 +20,14 @@
  @import "./articles/new";
  @import "./articles/show";
  @import "./users";
+
+.notice{
+  padding: 10px 0;
+  text-align: center;
+  background-color: #e0ffff;
+}
+.alert{
+  padding: 10px 0;
+  text-align: center;
+  background-color: #fffacd;
+}

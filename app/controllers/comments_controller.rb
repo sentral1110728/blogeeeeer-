@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   def create
     @comment = Comment.create(comment_params)
-    redirect_to article_path(@comment.article)
+    redirect_to article_path(@comment.article), notice: 'コメントを送信しました。'
   end
   
   private
