@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
-    redirect_to article_path(@comment.article)
+    redirect_to article_path(@comment.article), notice: 'コメントを送信しました。'
   end
   
   private
