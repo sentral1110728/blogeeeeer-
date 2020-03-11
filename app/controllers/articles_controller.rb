@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
+  #指定したアクションはログインしてないと利用できない(ログイン画面に遷移される)
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_article, only: [:edit, :update, :destroy, :show]
+  
   def index
     @articles = Article.includes([user: :profile]).paginate(page: params[:page], per_page: 5)
   end
