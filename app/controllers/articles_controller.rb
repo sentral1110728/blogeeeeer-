@@ -25,8 +25,11 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
-    redirect_to articles_path
+    if @article.destroy
+      redirect_to articles_path, notice: '記事を削除しました'
+    else
+      render :show
+    end
   end
 
   def edit
@@ -35,8 +38,12 @@ class ArticlesController < ApplicationController
 
   def update
     edited_article = Article.find(params[:id])
-    edited_article.update(article_params)
-    redirect_to article_path(edited_article.id)
+    
+    if edited_article.update(article_params)
+      redirect_to article_path(edited_article.id), notice: '記事を更新しました'
+    else
+      render :edit
+    end
   end
 
   private
