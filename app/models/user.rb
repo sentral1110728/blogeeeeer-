@@ -6,5 +6,6 @@ class User < ApplicationRecord
   has_many :articles
   has_many :comments
   has_one :profile
+  has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :profile
 end
