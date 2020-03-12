@@ -34,6 +34,11 @@ class ArticlesController < ApplicationController
     redirect_to article_path(edited_article.id)
   end
 
+  def search
+    @articles = Article.where('title LIKE(?)', "%#{params[:keyword]}%").includes([user: :profile]).paginate(page: params[:page], per_page: 5)
+    render :index
+  end
+
   private
   def article_params
     params.require(:article).permit(:title, :content).merge(user_id: current_user.id)
