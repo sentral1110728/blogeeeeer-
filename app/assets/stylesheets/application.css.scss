@@ -22,3 +22,14 @@
  @import "./users";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+.notice{
+  padding: 10px 0;
+  text-align: center;
+  background-color: #e0ffff;
+}
+.alert{
+  padding: 10px 0;
+  text-align: center;
+  background-color: #fffacd;
+}

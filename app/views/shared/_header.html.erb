@@ -5,10 +5,11 @@
   <% end %>
   <h2><%= link_to "appilcation", articles_path, class: "header__app_title" %></h2>
   <% if user_signed_in? %>
-    <%= link_to "マイページ", user_path(current_user.id), class: "header__my_page" %>
+    <%= link_to "#{current_user.nickname}さんのマイページ", user_path(current_user.id), class: "header__my_page" %>
     <%= link_to "ログアウト", destroy_user_session_path, class: "header__new_account", method: :delete %>
     <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
   <% else%>
     <%= link_to "ログイン", new_user_session_path, class: "header__new_account" %>
   <% end %>
 </div>
+<%= render 'layouts/notifications' %>
