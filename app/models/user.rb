@@ -6,5 +6,7 @@ class User < ApplicationRecord
   has_many :articles
   has_many :comments
   has_one :profile
+  # userが削除されたときuserに紐付くlikeも削除
+  has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :profile
 end

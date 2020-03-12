@@ -2,24 +2,7 @@
 <div class="container">
   <div class="container_main">
     <div class="articles">
-      <% @articles.each do |art| %>
-        <div class="article">
-          <div class="article__user">
-            <% if art.user.profile.user_image.present? %>
-              <%= image_tag art.user.profile.user_image.url, class: "article__user__image" %>
-            <% else %>
-              <img class="article__user__image">
-            <% end %>
-          </div>
-          <div class="article_content">
-            <%= link_to "#{art.title}", article_path(art.id), class: "article_content__title" %>
-            <div class="article_content__option">
-              <%= link_to "#{art.user.nickname}", user_path(art.user_id), class: "article_content__option__user_name" %>
-              <span class="article_content__option__created_at"><%= art.created_at %></span>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render @articles %>
     </div>
     <%= will_paginate @articles, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   </div>
