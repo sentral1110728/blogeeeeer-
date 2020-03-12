@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   root 'articles#index'
   resources :articles do
     resources :likes, only: [:create]
+    collection do
+      get 'search'
+    end
     resources :comments, only: [:create]
   end
   resources :users, only: [:show] do
