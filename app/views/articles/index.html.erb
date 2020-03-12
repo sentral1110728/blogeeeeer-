@@ -16,7 +16,15 @@
             <div class="article_content__option">
               <%= link_to "#{art.user.nickname}", user_path(art.user_id), class: "article_content__option__user_name" %>
               <span class="article_content__option__created_at"><%= art.created_at %></span>
-              <span><i class="far fa-thumbs-up"></i></span>
+              <% if art.like_user(current_user.id) %>
+                <%= link_to article_likes_path(art.id,art.like_user(current_user)), method: :delete do %>
+                  <span style="color:black;"><i class="far fa-thumbs-up">23</i></span>
+                <% end %>
+              <% else %>
+                <%= link_to article_likes_path(art.id), method: :post do %>
+                  <span><i class="far fa-thumbs-up">24</i></span>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
