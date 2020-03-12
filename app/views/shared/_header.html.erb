@@ -1,4 +1,8 @@
 <div class="header">
+  <%= form_tag search_articles_path, method: :get do %>
+    <input type="text" name="keyword" placeholder="記事の検索" class="header__search_area">
+    <i class="fa fa-search"></i>
+  <% end %>
   <h2><%= link_to "appilcation", articles_path, class: "header__app_title" %></h2>
   <% if user_signed_in? %>
     <%= link_to "#{current_user.nickname}さんのマイページ", user_path(current_user.id), class: "header__my_page" %>

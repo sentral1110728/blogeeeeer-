@@ -1,4 +1,11 @@
 $base_color: #790604;
+.fa-search{
+  position: absolute;
+  left: 198px;
+  font-size: 14px;
+  top: 37px;
+  color: black;
+}
 .header{
   background-color: $base_color;
   height: 80px;
@@ -7,6 +14,15 @@ $base_color: #790604;
   align-items: center;
   color: white;
   position: relative;
+  &__search_area{
+    padding-right: 20px;
+    height: 20px;
+    width: 180px;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    border-radius: 3px;
+  }
   &__app_title{
     color: white;
     text-decoration: none;
