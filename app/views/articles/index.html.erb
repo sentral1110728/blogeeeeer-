@@ -2,37 +2,7 @@
 <div class="container">
   <div class="container_main">
     <div class="articles">
-      <% @articles.each do |art| %>
-        <div class="article">
-          <div class="article__user">
-            <% if art.user.profile.user_image.present? %>
-              <%= image_tag art.user.profile.user_image.url, class: "article__user__image" %>
-            <% else %>
-              <img class="article__user__image">
-            <% end %>
-          </div>
-          <div class="article_content">
-            <%= link_to "#{art.title}", article_path(art.id), class: "article_content__title" %>
-            <div class="article_content__option">
-              <%= link_to "#{art.user.nickname}", user_path(art.user_id), class: "article_content__option__user_name" %>
-              <span class="article_content__option__created_at"><%= art.created_at %></span>
-              <% if user_signed_in? %>
-                <% if art.like_user(current_user.id) %>
-                  <%= link_to article_like_path(art.id,art.like_user(current_user)), method: :delete do %>
-                    <span style="color:black;"><i class="far fa-thumbs-up"><%= art.likes.length %></i></span>
-                  <% end %>
-                <% else %>
-                  <%= link_to article_likes_path(art.id), method: :post do %>
-                    <span><i class="far fa-thumbs-up"><%= art.likes.length %></i></span>
-                  <% end %>
-                <% end %>
-              <% else %>
-                <span style="color:black;"><i class="far fa-thumbs-up"><%= art.likes.length %></i></span>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render @articles %>
     </div>
     <%= will_paginate @articles, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   </div>

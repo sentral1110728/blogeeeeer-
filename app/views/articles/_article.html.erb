@@ -1,0 +1,19 @@
+<div class="article">
+  <div class="article__user">
+    <% if article.user.profile.user_image.present? %>
+      <%= image_tag article.user.profile.user_image.url, class: "article__user__image" %>
+    <% else %>
+      <img class="article__user__image">
+    <% end %>
+  </div>
+  <div class="article_content">
+    <%= link_to "#{article.title}", article_path(article.id), class: "article_content__title" %>
+    <div class="article_content__option">
+      <%= link_to "#{article.user.nickname}", user_path(article.user_id), class: "article_content__option__user_name" %>
+      <span class="article_content__option__created_at"><%= article.created_at %></span>
+      <div class="like_field">
+        <%= render partial: 'likes/like_link', locals:{ art: article } %>
+      </div>
+    </div>
+  </div>
+</div>
