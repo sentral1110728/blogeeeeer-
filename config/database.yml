@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: bbs_app_production
-  username: bbs_app
-  password: <%= ENV['BBS_APP_DATABASE_PASSWORD'] %>
+  database: blogeeeeer_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
