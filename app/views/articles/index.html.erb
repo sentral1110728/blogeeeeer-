@@ -1,9 +1,34 @@
 <%= render 'shared/header' %>
 <div class="container">
   <div class="container_main">
-    <div class="articles">
-      <%= render @articles %>
+    <div class="tab-panel">
+      <!--タブ-->
+      <ul class="tab-group">
+        <li class="tab tab-0 is-active">新着</li>
+        <%@category_list.each do |category|%>
+          <li class="tab tab-<%= category.id %>"><%= category.category_name %></li>
+        <%end%>
+      </ul>
+      
+      <!--タブを切り替えて表示するコンテンツ-->
+      <div class="articles">
+        <div class="panel tab-0 is-show">
+          <%= render @articles %>
+          <%= will_paginate @articles, :param_name => 'newArriva_page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        </div>
+        <div class="panel tab-1">
+          <%= render @article_array[1] %>
+          <%= will_paginate @article_array[1], :param_name => 'aritcle1_page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        </div>
+        <div class="panel tab-2">
+          <%= render @article_array[2] %>
+          <%= will_paginate @article_array[2], :param_name => 'aritcle2_page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        </div>
+        <div class="panel tab-3">
+          <%= render @article_array[3] %>
+          <%= will_paginate @article_array[3], :param_name => 'article3_page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        </div>
+      </div>
     </div>
-    <%= will_paginate @articles, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
   </div>
 </div>
