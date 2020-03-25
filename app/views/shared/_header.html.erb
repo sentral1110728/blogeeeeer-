@@ -4,7 +4,7 @@
     <%# <i class="fa fa-search"></i> %>
   <%# <% end %>
   <%= link_to search_articles_path do %>
-    <i class="fa fa-search"></i>
+    <i class="fa fa-search" style="color:white;position:absolute;left:10px;">記事を検索</i>
   <%end%>
   <h2><%= link_to "appilcation", articles_path, class: "header__app_title" %></h2>
   <% if user_signed_in? %>
