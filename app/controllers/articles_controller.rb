@@ -4,11 +4,22 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :destroy, :show]
   
   def index
-    @articles = Article.includes([user: :profile]).paginate(page: params[:page], per_page: 5)
+    # TODO 動的に配列作成する
+    @article_array = []
+    @articles = Article.includes([user: :profile]).paginate(page: params[:newArriva_page], per_page: 5).order(created_at: :desc)
+    @article_array << @articles
+    @articles1 = Article.where("category_id LIKE(?)", "1").includes([user: :profile]).paginate(page: params[:article1_page], per_page: 5).order(created_at: :desc)
+    @article_array << @articles1
+    @articles2 = Article.where("category_id LIKE(?)", "2").includes([user: :profile]).paginate(page: params[:aritcle2_page], per_page: 5).order(created_at: :desc)
+    @article_array << @articles2
+    @articles3 = Article.where("category_id LIKE(?)", "3").includes([user: :profile]).paginate(page: params[:aritcle3_page], per_page: 5).order(created_at: :desc)
+    @article_array << @articles3
+    @category_list = Category.all
   end
   
   def new
     @new_article = Article.new
+    @category_list = Category.all
   end
 
   def create
@@ -45,6 +56,7 @@ class ArticlesController < ApplicationController
     end
   end
 
+
   def search
     @articles = Article.where('title LIKE(?)', "%#{params[:keyword]}%").includes([user: :profile]).paginate(page: params[:page], per_page: 5)
     render :index
@@ -52,7 +64,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :content).merge(user_id: current_user.id)
+    params.require(:article).permit(:title, :content).merge(category_id: params[:article][:category_id], user_id: current_user.id)
   end
 
   def set_article
