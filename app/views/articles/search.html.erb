@@ -1,0 +1,16 @@
+<%= render 'shared/header' %>
+<div class="container">
+  <div class="container_main">
+    <div class="search_area" style="display:flex;justify-content:center;padding:30px 0;position:relative">
+      <%= form_tag search_articles_path, method: :get do %>
+        <%= select_tag :category_id, options_from_collection_for_select(@category_list, :id, :category_name), include_blank: true, style: "position:absolute;left:73px;" %>
+        <%= text_field_tag :keyword, '', placeholder: "記事の検索", style: "border-radius:3px;position:absolute;left:190px;" %>
+        <%= submit_tag("検索" , style: "border-radius:3px;position:absolute;right:156px;") %>
+      <% end %>
+    </div>
+    <div class="articles">
+      <%= render @articles %>
+      <%= will_paginate @articles, :param_name => 'page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+    </div>
+  </div>
+</div>

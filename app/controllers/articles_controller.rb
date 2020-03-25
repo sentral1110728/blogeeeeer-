@@ -58,8 +58,19 @@ class ArticlesController < ApplicationController
 
 
   def search
-    @articles = Article.where('title LIKE(?)', "%#{params[:keyword]}%").includes([user: :profile]).paginate(page: params[:page], per_page: 5)
-    render :index
+    if params[:category_id] == nil || params[:category_id] == "" then
+      @articles = Article.where('title LIKE(?)', "%#{params[:keyword]}%")
+                         .includes([user: :profile])
+                         .paginate(page: params[:page], per_page: 5)
+    else
+      @articles = Article.where('category_id LIKE(?) and title LIKE(?)', "#{params[:category_id]}", "%#{params[:keyword]}%")
+                         .includes([user: :profile])
+                         .paginate(page: params[:page], per_page: 5)
+    end
+    unless @articles.exists?
+      redirect_to search_articles_path, notice: '検索結果は0件です'
+    end
+    @category_list = Category.all
   end
 
   private
