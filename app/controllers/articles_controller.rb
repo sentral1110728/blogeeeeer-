@@ -5,16 +5,18 @@ class ArticlesController < ApplicationController
   
   def index
     # TODO 動的に配列作成する
-    @article_array = []
-    @articles = Article.includes([user: :profile]).paginate(page: params[:newArriva_page], per_page: 5).order(created_at: :desc)
-    @article_array << @articles
-    @articles1 = Article.where("category_id LIKE(?)", "1").includes([user: :profile]).paginate(page: params[:article1_page], per_page: 5).order(created_at: :desc)
-    @article_array << @articles1
-    @articles2 = Article.where("category_id LIKE(?)", "2").includes([user: :profile]).paginate(page: params[:aritcle2_page], per_page: 5).order(created_at: :desc)
-    @article_array << @articles2
-    @articles3 = Article.where("category_id LIKE(?)", "3").includes([user: :profile]).paginate(page: params[:aritcle3_page], per_page: 5).order(created_at: :desc)
-    @article_array << @articles3
-    @category_list = Category.all
+    # @article_array = []
+    # @articles = Article.includes([user: :profile]).paginate(page: params[:newArriva_page], per_page: 5).order(created_at: :desc)
+    # @article_array << @articles
+    # @articles1 = Article.where("category_id LIKE(?)", "1").includes([user: :profile]).paginate(page: params[:article1_page], per_page: 5).order(created_at: :desc)
+    # @article_array << @articles1
+    # @articles2 = Article.where("category_id LIKE(?)", "2").includes([user: :profile]).paginate(page: params[:aritcle2_page], per_page: 5).order(created_at: :desc)
+    # @article_array << @articles2
+    # @articles3 = Article.where("category_id LIKE(?)", "3").includes([user: :profile]).paginate(page: params[:aritcle3_page], per_page: 5).order(created_at: :desc)
+    # @article_array << @articles3
+
+    @articles = Article.where("category_id LIKE(?)", "#{params[:category_id]}").includes([user: :profile]).paginate(page: params[:page], per_page: 5).order(created_at: :desc)
+    @category = Category.find(params[:category_id])
   end
   
   def new
