@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  root 'articles#index'
+  root to: "tops#index"
   resources :articles do
     resources :likes, only: [:create, :destroy]
     collection do
