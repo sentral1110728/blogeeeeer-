@@ -15,6 +15,11 @@ p{
 }
 .fa-thumbs-up{
   padding-left: 25px;
+  color: #BBBBBB;
+}
+.fa-comment-dots{
+  padding-left: 25px;
+  color: #BBBBBB;
 }
 .container{
   width:100%;
@@ -29,6 +34,10 @@ p{
 }
 .category__title{
   text-align: center;
+  border-bottom: 1px solid gray;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin: 0 300px;
 }
 .container_main{
   width: 80%;
@@ -42,7 +51,7 @@ p{
   box-sizing: border-box;
 }
 .article{
-  height: 70px;
+  height: 100px;
   border-bottom:1px solid #EEEEEE;
   display:flex;
   padding:10px;
@@ -54,18 +63,26 @@ p{
 .article:hover{
   background-color: #FFEEFF;
 }
+.article_content h2{
+  text-align: center;
+  margin: 0;
+}
 .article_content{
   width: 100%;
   padding-left:20px;
   padding-top: 5px;
   position: relative;
   &__title{
-    font-size: 30px;
     text-decoration: none;
     color: black;
   }
   &__title:hover{
     border-bottom: 1px solid black;
+  }
+  &_text{
+    text-align: center;
+    padding-top: 20px;
+    color: #BBBBBB;
   }
   &__option{
     position: absolute;

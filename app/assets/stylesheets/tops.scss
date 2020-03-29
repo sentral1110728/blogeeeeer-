@@ -12,10 +12,14 @@ footer{
   line-height: 12;
 }
 .content__main{
-  margin: 200px auto;
+  margin-top: 100px;
+  margin-bottom: 200px;
 }
 .content__title{
   text-align: center;
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+  margin: 0 300px;
 }
 .header__image{
   background-image:url("猫.jpeg");
@@ -29,6 +33,11 @@ footer{
   position: sticky;
   top: 0;
   height: 60px;
+}
+.header__navi__sub{
+  display: flex;
+  justify-content: space-around;
+  line-height: 3;
 }
 .navi-title{
   text-align: center;
