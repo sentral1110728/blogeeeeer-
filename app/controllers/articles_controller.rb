@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     # @articles3 = Article.where("category_id LIKE(?)", "3").includes([user: :profile]).paginate(page: params[:aritcle3_page], per_page: 5).order(created_at: :desc)
     # @article_array << @articles3
 
-    @articles = Article.where("category_id LIKE(?)", "#{params[:category_id]}").includes([user: :profile]).paginate(page: params[:page], per_page: 5).order(created_at: :desc)
+    @articles = Article.where("category_id LIKE(?)", "#{params[:category_id]}").includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
     @category = Category.find(params[:category_id])
   end
   

@@ -35,7 +35,7 @@
               <div class="user_image"></div>
               <div>
                 <span class="comment_user_name"><%= comment.user.nickname %></span>
-                <span><%= comment.created_at %></span>
+                <span><%= comment.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d") %></span>
               </div>
             </div>
             <div class="comment_body">

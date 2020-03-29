@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "tops#index"
+  resources :tops, only: [:index]
   resources :articles do
     resources :likes, only: [:create, :destroy]
     collection do
