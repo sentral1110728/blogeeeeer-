@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
   <% if art.like_user(current_user.id) %>
-    <%= link_to article_like_path(art.id,art.like_user(current_user)), method: :delete, remote: true do %>
+    <%= link_to article_like_path(art.id,art.like_user(current_user),category_id: @category), method: :delete, remote: true do %>
       <span style="color:black;"><i class="far fa-thumbs-up" id="article_like_<%= art.id %>"><%= art.likes.length %></i></span>
     <% end %>
   <% else %>
-    <%= link_to article_likes_path(art.id), method: :post, remote: true do %>
+    <%= link_to article_likes_path(art.id,category_id: @category), method: :post, remote: true do %>
       <span><i class="far fa-thumbs-up" id="article_like_<%= art.id %>"><%= art.likes.length %></i></span>
     <% end %>
   <% end %>
