@@ -29,7 +29,7 @@
     <% if @comments.length > 0 %>
       <div class="comments_field">
         コメント一覧
-        <%= render 'comments/comment' %>
+        <%= render @comments %>
       </div>
     <% else %>
       <p class="no_comment_msg">※コメントは0件です</p>

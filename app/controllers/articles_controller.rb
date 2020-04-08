@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
   def show
     @new_comment = Comment.new
-    @comments = @article.comments.includes(:user)
+    @comments = @article.comments.includes(:user).order(created_at: :desc)
   end
 
   def destroy

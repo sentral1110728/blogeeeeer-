@@ -1,15 +1,13 @@
-<% @comments.each do |comment| %>
-  <div class="comment">
-    <div class="user_field">
-      <div class="user_image"></div>
-      <div>
-        <span class="comment_user_name"><%= comment.user.nickname %></span>
-        <span><%= comment.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d") %></span>
-      </div>
-    </div>
-    <div class="comment_body">
-      <p class="text_label">内容:</p>
-      <p><%= comment.comment %></p>
+<div class="comment">
+  <div class="user_field">
+    <div class="user_image"></div>
+    <div>
+      <span class="comment_user_name"><%= comment.user.nickname %></span>
+      <span><%= comment.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d") %></span>
     </div>
   </div>
-<% end %>
+  <div class="comment_body">
+    <p class="text_label">内容:</p>
+    <p><%= comment.comment %></p>
+  </div>
+</div>
