@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_051309) do
+ActiveRecord::Schema.define(version: 2020_04_20_072313) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "category_id"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 2020_03_24_051309) do
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["title"], name: "index_articles_on_title"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "authorities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -59,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_051309) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "authority_id", default: 1, null: false
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -67,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_051309) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["authority_id"], name: "index_users_on_authority_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -78,4 +84,5 @@ ActiveRecord::Schema.define(version: 2020_03_24_051309) do
   add_foreign_key "likes", "articles"
   add_foreign_key "likes", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "users", "authorities"
 end
