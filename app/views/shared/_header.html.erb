@@ -1,18 +1,13 @@
-<div class="header">
-  <%# <%= form_tag search_articles_path, method: :get do %>
-    <%# <input type="text" name="keyword" placeholder="記事の検索" class="header__search_area"> %>
-    <%# <i class="fa fa-search"></i> %>
-  <%# <% end %>
-  <%= link_to search_articles_path do %>
-    <i class="fa fa-search" style="color:white;position:absolute;left:10px;">記事を検索</i>
-  <%end%>
-  <h2><%= link_to "appilcation", articles_path, class: "header__app_title" %></h2>
-  <% if user_signed_in? %>
-    <%= link_to "#{current_user.nickname}さんのマイページ", user_path(current_user.id), class: "header__my_page" %>
-    <%= link_to "ログアウト", destroy_user_session_path, class: "header__new_account", method: :delete %>
-    <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
-  <% else%>
-    <%= link_to "ログイン", new_user_session_path, class: "header__new_account" %>
-  <% end %>
+<div class="header__navi">
+  <div class="header__navi__sub">
+    <%= link_to "記事を検索", search_articles_path, class: "fa fa-search" %>
+    <% if user_signed_in? %>
+      <%= link_to "#{current_user.nickname}さんのマイページ", user_path(current_user.id), class: "header__my_page" %>
+      <%= link_to "ログアウト", destroy_user_session_path, class: "header__new_account", method: :delete %>
+      <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
+    <% else%>
+      <%= link_to "ログイン", new_user_session_path, class: "header__new_account" %>
+    <% end %>
+  </div>
 </div>
 <%= render 'layouts/notifications' %>

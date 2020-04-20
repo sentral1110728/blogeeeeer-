@@ -1,8 +1,13 @@
 <%= render 'shared/header' %>
+<%= link_to 'topへ戻る', tops_path, style: "padding-left:30px;padding-top:30px;text-decoration:none;" %>
 <div class="user_page">
   <div class="user_show_main">
     <div class="user_image_field">
-      <%= image_tag @user_profile.user_image.url %>
+      <% if @user_profile.user_image.url.nil? %>
+        <%= image_tag 'default.jpeg' %>
+      <% else %>
+        <%= image_tag @user_profile.user_image.url %>
+      <% end %>
       <% if current_user.id == @user.id %>
         <%= link_to "編集", edit_user_profile_path(@user.id, @user_profile.id) %>
       <% end %>

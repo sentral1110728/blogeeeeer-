@@ -15,13 +15,13 @@
  */
 
  @import "./normalize";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
  @import "./shared/header";
  @import "./articles/index";
  @import "./articles/new";
  @import "./articles/show";
  @import "./users";
- @import 'font-awesome-sprockets';
- @import 'font-awesome';
 
 .notice{
   padding: 10px 0;

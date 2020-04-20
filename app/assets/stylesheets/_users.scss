@@ -42,13 +42,14 @@
 
 
 .user_page{
-  background-color: #790604;
   display: flex;
   justify-content: center;
 }
 .user_show_main{
-  background-color: white;
-  height: 100vh;
+  margin-top: 50px;
+  box-shadow:5px 5px;
+  border:1px solid #000;
+  min-height: 700px;
   width: 80%;
 }
 .user_image_field{

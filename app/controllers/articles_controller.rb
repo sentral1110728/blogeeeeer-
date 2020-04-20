@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # @article = Article.new(article_params)
     @article = Article.new(article_params)
     if @article.save
       redirect_to articles_path, notice: '記事を投稿しました'
@@ -25,7 +24,10 @@ class ArticlesController < ApplicationController
 
   def show
     @new_comment = Comment.new
-    @comments = @article.comments.includes(:user).order(created_at: :desc)
+    @comments = @article.comments.includes([user: :profile]).order(created_at: :desc)
+    # @comment_user = @comments.user.profile
+    # @user = User.find(params[:user_id])
+    # @user_profile = @user.profile
   end
 
   def destroy

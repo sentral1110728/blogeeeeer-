@@ -1,60 +1,65 @@
 $base_color: #790604;
-.fa-search{
-  position: absolute;
-  left: 198px;
-  font-size: 14px;
-  top: 37px;
-  color: black;
+
+.fa{
+  line-height: 3;
 }
-.header{
-  background-color: $base_color;
-  height: 80px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  position: relative;
-  &__search_area{
-    padding-right: 20px;
-    height: 20px;
-    width: 180px;
-    position: absolute;
-    left: 10px;
-    top: 30px;
-    border-radius: 3px;
-  }
-  &__app_title{
-    color: white;
-    text-decoration: none;
-  }
-  &__new_article{
-    color: white;
-    text-decoration: none;
-    position: absolute;
-    right: 70px;
-    font-size: 10px;
-  }
-  &__new_account{
-    color: white;
-    text-decoration: none;
-    position: absolute;
-    right: 10px;
-    font-size: 10px;
-  }
-  &__my_page{
-    color: white;
-    text-decoration: none;
-    position: absolute;
-    right: 130px;
-    font-size: 10px;
-  }
-  &__new_article:hover{
-    border-bottom: 1px white solid;
-  }
-  &__new_account:hover{
-    border-bottom: 1px white solid;
-  }
-  &__my_page:hover{
-    border-bottom: 1px white solid;
-  }
+.fa-search{
+  font-size: 10px;
+  text-decoration: none;
+}
+.header__image{
+  background-image:url("猫.jpeg");
+  background-size:  cover;
+  background-position: 60% 30%;
+  height: 600px;
+}
+.header__navi{
+  background-color: #EEEEEE;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 30px;
+  font-weight: 900;
+}
+.header__navi__sub{
+  display: flex;
+  justify-content: space-around;
+  line-height: 3;
+}
+.navi-title{
+  text-align: center;
+  padding-top: 10px;
+}
+.header__search_area{
+  padding-right: 20px;
+  height: 20px;
+  width: 180px;
+  border-radius: 3px;
+}
+.header__app_title{
+  text-decoration: none;
+}
+.header__new_article{
+  text-decoration: none;
+  font-size: 10px;
+}
+.header__new_account{
+  text-decoration: none;
+  font-size: 10px;
+}
+.header__my_page{
+  text-decoration: none;
+  font-size: 10px;
+}
+.fa-search:hover{
+  border-bottom: 1px gray solid;
+}
+.header__new_article:hover{
+  border-bottom: 1px gray solid;
+}
+.header__new_account:hover{
+  border-bottom: 1px gray solid;
+}
+.header__my_page:hover{
+  border-bottom: 1px gray solid;
 }
