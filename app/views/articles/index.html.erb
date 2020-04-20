@@ -1,14 +1,6 @@
 <div class="header__image">
 </div>
-<div class="header__navi">
-  <h2 style="text-align:center;">
-    活動記録
-  </h2>
-  <div class="header__navi__sub">
-    <a href="#">profiles</a>
-    <a href="#">新規投稿</a>
-  </div>
-</div>
+<%= render 'shared/header' %>
 <h1 class="category__title"><%= @category.category_name %></h1>
 <%= link_to 'topへ戻る', tops_path, style: "padding-left:30px;padding-top:30px;text-decoration:none;" %>
 <div class="container">

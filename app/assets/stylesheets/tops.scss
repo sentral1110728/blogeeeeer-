@@ -21,27 +21,6 @@ footer{
   padding-bottom: 20px;
   margin: 0 300px;
 }
-.header__image{
-  background-image:url("猫.jpeg");
-  background-size:  cover;
-  background-position: 60% 30%;
-  height: 600px;
-}
-.header__navi{
-  background-color: #EEEEEE;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  height: 60px;
-}
-.header__navi__sub{
-  display: flex;
-  justify-content: space-around;
-  line-height: 3;
-}
-.navi-title{
-  text-align: center;
-}
 .row{
   margin: 50px 50px;
   display: flex;

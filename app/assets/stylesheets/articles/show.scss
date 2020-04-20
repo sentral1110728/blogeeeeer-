@@ -1,9 +1,10 @@
 .container_show{
   width:100%;
   padding:40px 0;
-  background-color: #EEEEEE;
 }
 .container_show_main{
+  box-shadow:5px 5px;
+  border:1px solid #000;
   background-color: white;
   width: 80%;
   margin: auto;
@@ -13,7 +14,6 @@
   padding: 20px 0;
   margin: 20px 30px;
   border-bottom:1px solid gray;
-  position: relative;
 }
 .article_text_content{
   padding: 100px 30px;
@@ -51,6 +51,8 @@
   padding: 50px 30px;
 }
 .container_comment{
+  box-shadow:5px 5px;
+  border:1px solid #000;
   background-color: white;
   width: 80%;
   margin: 40px auto 0;
@@ -69,9 +71,10 @@
   background-color: #EEEEEE;
 }
 .user_image{
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   border: 1px solid black;
+  border-radius: 3px;
 }
 .comment_body{
   padding: 0 20px 20px 20px;

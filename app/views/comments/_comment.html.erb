@@ -1,6 +1,10 @@
 <div class="comment">
   <div class="user_field">
-    <div class="user_image"></div>
+    <% if comment.user.profile.user_image.url.nil? %>
+      <%= image_tag 'default.jpeg', class: "user_image" %>
+    <% else %>
+      <%= image_tag comment.user.profile.user_image.url, class: "user_image" %>
+    <% end %>
     <div>
       <span class="comment_user_name"><%= comment.user.nickname %></span>
       <span><%= comment.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d") %></span>
