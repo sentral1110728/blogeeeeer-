@@ -4,33 +4,19 @@
   </div>
 </div>
 <%= render 'shared/header' %>
-<div>
 <div class="content__main">
   <h1 class="content__title">活動記録</h1>
-  <div class="row">
-    <% @categories.each do |category| %>
-      <%= link_to articles_path(category_id: category.id), class: "category-link" do %>
-        <div class="col">
-          <%= image_tag '猫.jpeg', size: '250x150' %>
-          <p class="category-name"><%= category.category_name %></p>
-        </div>
-      <%end%>
-    <%end%>
-  </div>
-  <div class="row">
-    <div class="category-link">
-      <div class="col">
-        <%= image_tag '猫.jpeg', size: '250x150' %>
-        <p class="category-name">カテゴリー名</p>
-      </div>
+  <% @categories_slice.each do |categorys| %>
+    <div class="row">
+      <% categorys.each do |category| %>
+        <%= link_to articles_path(category_id: category.id), class: "category-link" do %>
+          <div class="col">
+            <%= image_tag '猫.jpeg', size: '250x150' %>
+            <p class="category-name"><%= category.category_name %></p>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <div class="category-link">
-      <div class="col">
-        <%= image_tag '猫.jpeg', size: '250x150' %>
-        <p class="category-name">カテゴリー名</p>
-      </div>
-    </div>
-  </div>
-</div>
+  <% end %>
 </div>
 <%= render 'shared/footer' %>
