@@ -5,10 +5,14 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.where("category_id LIKE(?)", "#{params[:category_id]}").includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
+    # TODO URL入力で遷移するとcategory_idのパラメータがなくなる
     @category = Category.find(params[:category_id])
   end
   
   def new
+    if current_user.authority_id == 1 then
+      redirect_to tops_path, notice: '管理者用機能のため遷移できません。'
+    end
     @new_article = Article.new
     @category_list = Category.all
   end
@@ -16,7 +20,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to articles_path, notice: '記事を投稿しました'
+      redirect_to tops_path, notice: '記事を投稿しました'
     else
       redirect_to new_article_path
     end
