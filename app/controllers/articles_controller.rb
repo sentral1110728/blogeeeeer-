@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.where("category_id LIKE(?)", "#{params[:category_id]}").includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
+    # TODO URL入力で遷移するとcategory_idのパラメータがなくなる
     @category = Category.find(params[:category_id])
   end
   
