@@ -13,4 +13,7 @@ class CategoriesController < ApplicationController
         .group("categories.id")
         .count
   end
+
+  def new
+  end
 end
