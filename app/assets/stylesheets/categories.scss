@@ -4,6 +4,11 @@
 .fa-plus-square{
   margin-left: 10px;
 }
+.fa-angle-double-left, .fa-angle-double-right{
+  z-index: 1;
+  font-size: 30px;
+  margin: auto 10px;
+}
 .page_title{
   text-align: center;
   padding-top: 20px;
@@ -12,6 +17,7 @@
   text-align: right;
 }
 .category{
+  position:relative;
   height: 150px;
   display: flex;
   justify-content: space-between;
@@ -23,4 +29,30 @@
   &__content{
     margin: auto 20px;
   }
+}
+.category-link{
+  display: flex;
+  justify-content: center;
+}
+.text_title{
+  text-align: right;
+}
+div[class^="overlay"]{
+  display: none;
+  background-color: rgba(0,0,0,0.5);
+  height: 150px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+div[class^="inner_overlay"]{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+.category_update, .category_delete{
+  font-size: 30px;
+  border-radius: 3px;
+  padding: 10px;
 }
