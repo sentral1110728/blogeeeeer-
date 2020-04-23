@@ -35,7 +35,7 @@
             </tr>
             <tr>
               <td style="text-align:right;"><b>最終更新日</b></td>
-              <td>2020/04/21</td>
+              <td><%= category.articles.order(:created_at).last.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') %></td>
             </tr>
           </table>
         </div>
