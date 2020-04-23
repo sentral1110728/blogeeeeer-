@@ -1,3 +1,26 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.fa-plus-square{
+  margin-left: 10px;
+}
+.page_title{
+  text-align: center;
+  padding-top: 20px;
+}
+.add_category{
+  text-align: right;
+}
+.category{
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid gray;
+  margin: 20px 0;
+  &__name{
+    margin: auto 20px;
+  }
+  &__content{
+    margin: auto 20px;
+  }
+}
