@@ -20,13 +20,13 @@
             <tr>
               <td style="text-align:right;"><b>いいね総数</b></td>
               <td>
-                <%= @category_likes_count[i] %>
+                <%= @category_likes_count[i] == nil ? 0 : @category_likes_count[i] %>
               </td>
             </tr>
             <tr>
               <td style="text-align:right;"><b>コメント総数</b></td>
               <td>
-                <%= @category_comments_count[i] %>
+                <%= @category_comments_count[i] == nil ? 0 : @category_comments_count[i] %>
               </td>
             </tr>
             <tr>
