@@ -37,7 +37,7 @@
             </tr>
             <tr>
               <td class="text_title"><b>最終更新日</b></td>
-              <td><%= category.articles.order(:created_at).last.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') %></td>
+              <td><%= category.articles.order(:created_at).last.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') if category.articles.length > 0 %></td>
             </tr>
           </table>
         </div>
