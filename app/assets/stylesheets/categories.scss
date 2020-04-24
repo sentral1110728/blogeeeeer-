@@ -56,3 +56,24 @@ div[class^="inner_overlay"]{
   border-radius: 3px;
   padding: 10px;
 }
+.category_image_field{
+  text-align: center;
+  padding-bottom: 30px;
+}
+.category_name_field{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.category_name{
+  border-radius: 3px;
+  width: 50%;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.category_new_sender{
+  border-radius: 3px;
+  width: 50px;
+}
