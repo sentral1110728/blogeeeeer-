@@ -10,7 +10,7 @@
     <% @categories.each.with_index(1) do |category, i| %>
       <div class="category">
         <%= link_to articles_path(category_id: category.id), class: "category-link" do %>
-          <%= image_tag '猫.jpeg', class: "category__image", size: '250x150' %>
+          <%= image_tag category.image.url unless category.image.url.nil? %>
           <h1 class="category__name"><%= category.category_name %></h1>
         <% end %>
         <div class="category__content">
