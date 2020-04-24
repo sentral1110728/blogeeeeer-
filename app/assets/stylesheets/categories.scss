@@ -1,0 +1,79 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.fa-plus-square{
+  margin-left: 10px;
+}
+.fa-angle-double-left, .fa-angle-double-right{
+  z-index: 1;
+  font-size: 30px;
+  margin: auto 10px;
+}
+.page_title{
+  text-align: center;
+  padding-top: 20px;
+}
+.add_category{
+  text-align: right;
+}
+.category{
+  position:relative;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid gray;
+  margin: 20px 0;
+  &__name{
+    margin: auto 20px;
+  }
+  &__content{
+    margin: auto 20px;
+  }
+}
+.category-link{
+  display: flex;
+  justify-content: center;
+}
+.text_title{
+  text-align: right;
+}
+div[class^="overlay"]{
+  display: none;
+  background-color: rgba(0,0,0,0.5);
+  height: 150px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+div[class^="inner_overlay"]{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+.category_update, .category_delete{
+  font-size: 30px;
+  border-radius: 3px;
+  padding: 10px;
+}
+.category_image_field{
+  text-align: center;
+  padding-bottom: 30px;
+}
+.category_name_field{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.category_name{
+  border-radius: 3px;
+  width: 50%;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.category_new_send{
+  border-radius: 3px;
+  width: 50px;
+}

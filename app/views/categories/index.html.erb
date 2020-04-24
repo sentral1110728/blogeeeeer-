@@ -1,0 +1,54 @@
+<%= render 'shared/header' %>
+<h1 class="page_title">カテゴリー一覧</h1>
+<div class="container">
+  <div class="container_main">
+    <div class="add_category">
+      <%= link_to new_category_path do %>
+        カテゴリー追加<i class="far fa-plus-square"></i>
+      <% end %>
+    </div>
+    <% @categories.each.with_index(1) do |category, i| %>
+      <div class="category">
+        <%= link_to articles_path(category_id: category.id), class: "category-link" do %>
+          <%= image_tag category.image.url unless category.image.url.nil? %>
+          <h1 class="category__name"><%= category.category_name %></h1>
+        <% end %>
+        <div class="category__content">
+          <table>
+            <tr>
+              <td class="text_title"><b>記事数</b></td>
+              <td><%= category.articles.length %></td>
+            </tr>
+            <tr>
+              <td class="text_title"><b>いいね総数</b></td>
+              <td>
+                <%= @category_likes_count[i] == nil ? 0 : @category_likes_count[i] %>
+              </td>
+            </tr>
+            <tr>
+              <td class="text_title"><b>コメント総数</b></td>
+              <td>
+                <%= @category_comments_count[i] == nil ? 0 : @category_comments_count[i] %>
+              </td>
+            </tr>
+            <tr>
+              <td class="text_title"><b>カテゴリー作成日</b></td>
+              <td><%= category.created_at.strftime("%Y/%m/%d") %></td>
+            </tr>
+            <tr>
+              <td class="text_title"><b>最終更新日</b></td>
+              <td><%= category.articles.order(:created_at).last.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') if category.articles.length > 0 %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="overlay<%=i%>">
+          <div class="inner_overlay<%=i%>">
+            <button href="#" class="category_update">編集</button>
+            <button href="#" class="category_delete">削除</button>
+          </div>
+        </div>
+        <i class="fas fa-angle-double-left toggle_icon<%=i%>"></i>
+      </div>
+    <% end %>
+  </div>
+</div>

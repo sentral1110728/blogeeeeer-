@@ -6,6 +6,7 @@
       <%= link_to "ログアウト", destroy_user_session_path, class: "header__new_account", method: :delete %>
       <% if current_user.authority_id == 2 %>
         <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
+        <%= link_to "カテゴリー管理", categories_path, class: "header__new_article" %>
       <% end %>
     <% else%>
       <%= link_to "ログイン", new_user_session_path, class: "header__new_account" %>
