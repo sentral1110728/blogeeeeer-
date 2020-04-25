@@ -43,6 +43,7 @@
         </div>
         <div class="overlay<%=i%>">
           <div class="inner_overlay<%=i%>">
+          <%= link_to '編集', edit_category_path(category.id) %>
             <button href="#" class="category_update">編集</button>
             <button href="#" class="category_delete">削除</button>
           </div>

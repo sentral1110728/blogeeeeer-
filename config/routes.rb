@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
   root to: "tops#index"
   resources :tops, only: [:index]
-  resources :categories, only: [:index, :new, :create]
+  resources :categories, only: [:index, :new, :create, :edit, :update]
   resources :articles do
     resources :likes, only: [:create, :destroy]
     collection do
@@ -16,5 +16,4 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :profiles, only: [:edit, :update]
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
