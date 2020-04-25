@@ -1,9 +1,10 @@
 <%= render 'shared/header' %>
-<h1 class="page_title">カテゴリー追加</h1>
+<h1 class="page_title">カテゴリー編集</h1>
 <div class="container">
   <div class="container_main">
-    <%= form_with model: @new_category do |f| %>
+    <%= form_with model: @category do |f| %>
       <div class="category_image_field">
+          <%= image_tag @category.image.url unless @category.image.url.nil? %>
           <%= f.file_field :image, class: "category_image_upload" %>
       </div>
       <div class="category_name_field">
