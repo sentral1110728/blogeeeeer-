@@ -12,6 +12,10 @@ class CategoriesController < ApplicationController
         .joins(articles: :comments)
         .group("categories.id")
         .count
+    if params[:image] != nil
+      img = MiniMagick::Image.read(params[:image])
+      img.resize "300x300"
+    end
   end
 
   def new
@@ -26,9 +30,16 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category = Category.find(params[:id])
   end
 
   def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      redirect_to categories_path, notice: '記事を更新しました'
+    else
+      render :edit, notice: '記事を更新できませんでした'
+    end
   end
 
   private

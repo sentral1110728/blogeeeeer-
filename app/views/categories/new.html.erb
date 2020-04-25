@@ -4,7 +4,6 @@
   <div class="container_main">
     <%= form_with model: @new_category do |f| %>
       <div class="category_image_field">
-        <%= image_tag '猫.jpeg', size: '500x300' %>
           <%= f.file_field :image, class: "category_image_upload" %>
       </div>
       <div class="category_name_field">
