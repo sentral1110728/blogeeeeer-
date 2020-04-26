@@ -5,7 +5,9 @@
       <%= link_to "#{current_user.nickname}さんのマイページ", user_path(current_user.id), class: "header__my_page" %>
       <%= link_to "ログアウト", destroy_user_session_path, class: "header__new_account", method: :delete %>
       <% if current_user.authority_id == 2 %>
-        <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
+        <% if Category.all.length > 0 %>
+          <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
+        <% end %>
         <%= link_to "カテゴリー管理", categories_path, class: "header__new_article" %>
       <% end %>
     <% else%>
