@@ -9,6 +9,9 @@
       <% end %>
     </div>
     <div class="articles">
+      <% if @articles.length < 1 %>
+        <div class="no_article_msg" style="text-align:center;color:red;">検索結果は0件です</div>
+      <% end %>
       <%= render @articles %>
       <%= will_paginate @articles, :param_name => 'page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
     </div>

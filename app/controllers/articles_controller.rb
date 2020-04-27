@@ -64,9 +64,6 @@ class ArticlesController < ApplicationController
                          .includes([user: :profile])
                          .paginate(page: params[:page], per_page: 5)
     end
-    unless @articles.exists?
-      redirect_to search_articles_path, notice: '検索結果は0件です'
-    end
     @category_list = Category.all
   end
 
