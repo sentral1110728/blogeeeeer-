@@ -4,7 +4,7 @@
   <div class="user_show_main">
     <div class="user_image_field">
       <% if @user_profile.user_image.url.nil? %>
-        <%= image_tag 'default.jpeg' %>
+        <%= image_tag asset_path('default.jpeg') %>
       <% else %>
         <%= image_tag @user_profile.user_image.url %>
       <% end %>
