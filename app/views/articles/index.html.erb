@@ -1,5 +1,4 @@
-<div class="header__image">
-</div>
+<%= image_tag @category.image.url, class: "header__image" %>
 <%= render 'shared/header' %>
 <h1 class="category__title"><%= @category.category_name %></h1>
 <%= link_to 'topへ戻る', tops_path, style: "padding-left:30px;padding-top:30px;text-decoration:none;" %>
