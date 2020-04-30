@@ -29,9 +29,6 @@ class ArticlesController < ApplicationController
   def show
     @new_comment = Comment.new
     @comments = @article.comments.includes([user: :profile]).order(created_at: :desc)
-    # @comment_user = @comments.user.profile
-    # @user = User.find(params[:user_id])
-    # @user_profile = @user.profile
   end
 
   def destroy
