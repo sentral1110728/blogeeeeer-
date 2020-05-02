@@ -24,9 +24,16 @@ http://13.230.224.20
 - capistrano による AWS EC2 への自動デプロイ 
 - AWS S3 の利用
 
+## トップページ
 [![Image from Gyazo](https://i.gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2.jpg)](https://gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2)
+
+## カテゴリー管理ページ
 [![Image from Gyazo](https://i.gyazo.com/5e21244e1e3041744149059e610c9a5c.jpg)](https://gyazo.com/5e21244e1e3041744149059e610c9a5c)
+
+## 記事一覧ページ
 [![Image from Gyazo](https://i.gyazo.com/32c357de77b4aad8f39330f7d9e6aa02.jpg)](https://gyazo.com/32c357de77b4aad8f39330f7d9e6aa02)
+
+## 記事詳細ページ
 [![Image from Gyazo](https://i.gyazo.com/4e92b7d2a7b652c91cca4a72a3e7f4ce.png)](https://gyazo.com/4e92b7d2a7b652c91cca4a72a3e7f4ce)
 
 # technology(使用技術)
