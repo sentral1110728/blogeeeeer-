@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
   root to: "tops#index"
   resources :tops, only: [:index]
-  resources :categories, only: [:index, :new, :create, :edit, :update]
+  resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :articles do
     resources :likes, only: [:create, :destroy]
     collection do

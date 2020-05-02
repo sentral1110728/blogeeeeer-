@@ -38,7 +38,16 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to categories_path, notice: '記事を更新しました'
     else
-      render :edit, notice: '記事を更新できませんでした'
+      render :edit
+    end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    if @category.destroy
+      redirect_to categories_path, notice: '記事を削除しました'
+    else
+      render :index
     end
   end
 
