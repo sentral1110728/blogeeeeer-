@@ -24,7 +24,7 @@ http://13.230.224.20
 - capistrano による AWS EC2 への自動デプロイ 
 - AWS S3 の利用
 
-![Uploading スクリーンショット 2020-05-02 10.52.55.png…]()
+[![Image from Gyazo](https://i.gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2.jpg)](https://gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2)
 
 # technology(使用技術)
 - Ruby 2.5.3
