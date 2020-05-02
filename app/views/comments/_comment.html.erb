@@ -1,7 +1,7 @@
 <div class="comment">
   <div class="user_field">
     <% if comment.user.profile.user_image.url.nil? %>
-      <%= image_tag 'default.jpeg', class: "user_image" %>
+      <%= image_tag asset_url('default.jpg'), class: "user_image" %>
     <% else %>
       <%= image_tag comment.user.profile.user_image.url, class: "user_image" %>
     <% end %>
