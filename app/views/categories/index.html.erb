@@ -10,9 +10,7 @@
     <% @categories.each.with_index(1) do |category, i| %>
       <div class="category">
         <%= link_to articles_path(category_id: category.id), class: "category-link" do %>
-          <%# <div class="category_image" > %>
-            <%= image_tag category.image.url unless category.image.url.nil? %>
-          <%# </div> %>
+          <%= image_tag category.image.url unless category.image.url.nil? %>
           <h1 class="category__name"><%= category.category_name %></h1>
         <% end %>
         <div class="category__content">
@@ -45,8 +43,8 @@
         </div>
         <div class="overlay<%=i%>">
           <div class="inner_overlay<%=i%>">
-          <%= link_to '編集', edit_category_path(category.id), class: "category_update" %>
-            <button href="#" class="category_delete">削除</button>
+            <%= link_to '編集', edit_category_path(category.id), class: "category_update" %>
+            <%= link_to '削除', category_path(category.id), class: "category_delete", method: :delete %>
           </div>
         </div>
         <i class="fas fa-angle-double-left toggle_icon<%=i%>"></i>
