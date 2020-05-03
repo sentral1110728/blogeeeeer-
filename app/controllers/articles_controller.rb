@@ -5,7 +5,10 @@ class ArticlesController < ApplicationController
   before_action :set_categories, only: %i[new create search]
 
   def index
-    @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s).includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
+    @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s)
+                        .includes([user: :profile])
+                        .paginate(page: params[:page], per_page: 5)
+                        .order(created_at: :desc)
     @category = Category.find(params[:category_id])
   end
 
@@ -55,7 +58,9 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content).merge(category_id: params[:article][:category_id], user_id: current_user.id)
+    params.require(:article)
+          .permit(:title, :content)
+          .merge(category_id: params[:article][:category_id], user_id: current_user.id)
   end
 
   def set_article
