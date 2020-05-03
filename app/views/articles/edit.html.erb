@@ -1,7 +1,8 @@
 <%= render 'shared/header' %>
 <div class="container">
   <div class="container_main">
-    <%= form_with model: @article do |f| %>
+    <%= form_with model: @article, local: true do |f| %>
+      <%= render 'shared/error_message', model: f.object %>
       <div class="container_main__new_article_field">
         <%= f.hidden_field :category_id %>
         <%= f.text_field :title, placeholder: "titleの入力", class: "container_main__new_article_field__input_title_field" %>
