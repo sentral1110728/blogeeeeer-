@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: %i[edit update destroy]
+
   def index
     # TODO: SQLでまとめたい
     @categories = Category.all
@@ -23,18 +25,17 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    create_category = Category.new(category_params)
-    if create_category.save
+    @new_category = Category.new(category_params)
+    if @new_category.save
       redirect_to categories_path, notice: '新規カテゴリーを作成しました'
+    else
+      render :new
     end
   end
 
-  def edit
-    @category = Category.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       redirect_to categories_path, notice: '記事を更新しました'
     else
@@ -43,7 +44,6 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     if @category.destroy
       redirect_to categories_path, notice: '記事を削除しました'
     else
@@ -55,5 +55,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:category_name, :image)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 end
