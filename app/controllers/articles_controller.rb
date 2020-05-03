@@ -18,11 +18,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    if @article.save
+    @new_article = Article.new(article_params)
+    if @new_article.save
       redirect_to tops_path, notice: '記事を投稿しました'
     else
-      redirect_to new_article_path
+      @category_list = Category.all
+      render :new
     end
   end
 
