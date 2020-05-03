@@ -1,16 +1,16 @@
 <%= render 'shared/header' %>
 <div class="container">
   <div class="container_main">
-    <div class="search_area" style="display:flex;justify-content:center;padding:30px 0;position:relative">
+    <div class="search_area">
       <%= form_tag search_articles_path, method: :get do %>
-        <%= select_tag :category_id, options_from_collection_for_select(@category_list, :id, :category_name), include_blank: true, style: "position:absolute;left:73px;" %>
-        <%= text_field_tag :keyword, '', placeholder: "記事の検索", style: "border-radius:3px;position:absolute;left:190px;" %>
-        <%= submit_tag("検索" , style: "border-radius:3px;position:absolute;right:156px;") %>
+        <%= select_tag :category_id, options_from_collection_for_select(@category_list, :id, :category_name), include_blank: true, class: "category_select" %>
+        <%= text_field_tag :keyword, '', placeholder: "記事の検索", class: "search_keyword" %>
+        <%= submit_tag("検索" , class: "search_send") %>
       <% end %>
     </div>
     <div class="articles">
       <% if @articles.length < 1 %>
-        <div class="no_article_msg" style="text-align:center;color:red;">検索結果は0件です</div>
+        <div class="no_article_msg">検索結果は0件です</div>
       <% end %>
       <%= render @articles %>
       <%= will_paginate @articles, :param_name => 'page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
