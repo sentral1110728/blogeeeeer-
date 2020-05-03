@@ -5,8 +5,10 @@ class ArticlesController < ApplicationController
   before_action :set_categories, only: %i[new create search]
 
   def index
-    @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s).includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
-    # TODO: URL入力で遷移するとcategory_idのパラメータがなくなる
+    @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s)
+                        .includes([user: :profile])
+                        .paginate(page: params[:page], per_page: 5)
+                        .order(created_at: :desc)
     @category = Category.find(params[:category_id])
   end
 
@@ -20,7 +22,7 @@ class ArticlesController < ApplicationController
   def create
     @new_article = Article.new(article_params)
     if @new_article.save
-      redirect_to tops_path, notice: '記事を投稿しました'
+      redirect_to articles_path(category_id: @new_article.category_id), notice: '記事を投稿しました'
     else
       render :new
     end
@@ -33,7 +35,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     if @article.destroy
-      redirect_to articles_path, notice: '記事を削除しました'
+      redirect_to articles_path(category_id: @article.category_id), notice: '記事を削除しました'
     else
       render :show
     end
@@ -50,21 +52,15 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    if params[:category_id].nil? || params[:category_id] == ''
-      @articles = Article.where('title LIKE(?)', "%#{params[:keyword]}%")
-                         .includes([user: :profile])
-                         .paginate(page: params[:page], per_page: 5)
-    else
-      @articles = Article.where('category_id LIKE(?) and title LIKE(?)', params[:category_id].to_s, "%#{params[:keyword]}%")
-                         .includes([user: :profile])
-                         .paginate(page: params[:page], per_page: 5)
-    end
+    @articles = Article.search_articles(params[:category_id], params[:keyword], params[:page], 5)
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :content).merge(category_id: params[:article][:category_id], user_id: current_user.id)
+    params.require(:article)
+          .permit(:title, :content)
+          .merge(category_id: params[:article][:category_id], user_id: current_user.id)
   end
 
   def set_article

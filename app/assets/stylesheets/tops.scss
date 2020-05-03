@@ -38,14 +38,17 @@ footer{
   text-align: center;
 }
 .app-title-field{
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.7);
   height: 400px;
-  width: 300px;
+  width: 400px;
   margin-left: 10px;
   padding: 10px 20px;
   border-radius: 10px;
   position: absolute;
   top: 20px;
+  font-family: fantasy;
+  font-weight: bold;
+  color: white;
 }
 .app-title{
   font-size: 30px;

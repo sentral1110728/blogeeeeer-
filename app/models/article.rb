@@ -15,4 +15,16 @@ class Article < ApplicationRecord
   def like_user(id)
     likes.find_by(user_id: id)
   end
+
+  def self.search_articles(category_id, keyword, page, page_limit)
+    if category_id.nil? || category_id == ''
+      return Article.where('title LIKE(?)', "%#{keyword}%")
+                    .includes([user: :profile])
+                    .paginate(page: page, per_page: page_limit)
+    else
+      return Article.where('category_id LIKE(?) and title LIKE(?)', category_id.to_s, "%#{keyword}%")
+                    .includes([user: :profile])
+                    .paginate(page: page, per_page: page_limit)
+    end
+  end
 end
