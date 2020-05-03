@@ -1,16 +1,16 @@
 class ArticlesController < ApplicationController
-  #指定したアクションはログインしてないと利用できない(ログイン画面に遷移される)
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_article, only: [:edit, :update, :destroy, :show]
-  
+  # 指定したアクションはログインしてないと利用できない(ログイン画面に遷移される)
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_article, only: %i[edit update destroy show]
+
   def index
-    @articles = Article.where("category_id LIKE(?)", "#{params[:category_id]}").includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
-    # TODO URL入力で遷移するとcategory_idのパラメータがなくなる
+    @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s).includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
+    # TODO: URL入力で遷移するとcategory_idのパラメータがなくなる
     @category = Category.find(params[:category_id])
   end
-  
+
   def new
-    if current_user.authority_id == 1 then
+    if current_user.authority_id == 1
       redirect_to tops_path, notice: '管理者用機能のため遷移できません。'
     end
     @new_article = Article.new
@@ -39,8 +39,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @article.update(article_params)
@@ -50,14 +49,13 @@ class ArticlesController < ApplicationController
     end
   end
 
-
   def search
-    if params[:category_id] == nil || params[:category_id] == "" then
+    if params[:category_id].nil? || params[:category_id] == ''
       @articles = Article.where('title LIKE(?)', "%#{params[:keyword]}%")
                          .includes([user: :profile])
                          .paginate(page: params[:page], per_page: 5)
     else
-      @articles = Article.where('category_id LIKE(?) and title LIKE(?)', "#{params[:category_id]}", "%#{params[:keyword]}%")
+      @articles = Article.where('category_id LIKE(?) and title LIKE(?)', params[:category_id].to_s, "%#{params[:keyword]}%")
                          .includes([user: :profile])
                          .paginate(page: params[:page], per_page: 5)
     end
@@ -65,6 +63,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title, :content).merge(category_id: params[:article][:category_id], user_id: current_user.id)
   end
