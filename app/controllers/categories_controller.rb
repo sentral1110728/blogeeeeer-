@@ -26,7 +26,6 @@ class CategoriesController < ApplicationController
 
   def create
     @new_category = Category.new(category_params)
-    # @create_category = Category.create(category_params)
     if @new_category.save
       redirect_to categories_path, notice: '新規カテゴリーを作成しました'
     else
