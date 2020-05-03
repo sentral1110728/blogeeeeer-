@@ -9,4 +9,11 @@ class Category < ApplicationRecord
 
   validates :image,
     presence: true
+
+  def self.category_image(image) 
+    unless image.nil?
+      img = MiniMagick::Image.read(image)
+      img.resize '300x300'
+    end
+  end
 end

@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s).includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
-    # TODO: URL入力で遷移するとcategory_idのパラメータがなくなる
     @category = Category.find(params[:category_id])
   end
 
@@ -50,15 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    if params[:category_id].nil? || params[:category_id] == ''
-      @articles = Article.where('title LIKE(?)', "%#{params[:keyword]}%")
-                         .includes([user: :profile])
-                         .paginate(page: params[:page], per_page: 5)
-    else
-      @articles = Article.where('category_id LIKE(?) and title LIKE(?)', params[:category_id].to_s, "%#{params[:keyword]}%")
-                         .includes([user: :profile])
-                         .paginate(page: params[:page], per_page: 5)
-    end
+    @articles = Article.search_articles(params[:category_id], params[:keyword], params[:page], 5)
   end
 
   private
