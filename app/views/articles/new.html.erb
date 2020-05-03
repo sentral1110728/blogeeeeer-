@@ -1,6 +1,5 @@
 <%= render 'shared/header' %>
 <div class="container">
-<%= link_to 'topへ戻る', tops_path, style: "padding-left:30px;padding-top:30px;text-decoration:none;" %>
   <div class="container_main">
     <%= form_with model: @new_article, local: true do |f| %>
       <%= render 'shared/error_message', model: f.object %>
