@@ -3,10 +3,10 @@ class Category < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :category_name, 
-    presence: true, 
+    presence: true,
     uniqueness: true, 
     length: { maximum: 20 }
 
-  validates :image, 
+  validates :image,
     presence: true
 end

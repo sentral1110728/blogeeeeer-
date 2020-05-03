@@ -2,7 +2,8 @@
 <h1 class="page_title">カテゴリー追加</h1>
 <div class="container">
   <div class="container_main">
-    <%= form_with model: @new_category do |f| %>
+    <%= form_with model: @new_category, local: true do |f| %>
+      <%= render 'shared/error_message', model: f.object %>
       <div class="category_image_field">
           <%= f.file_field :image, class: "category_image_upload" %>
       </div>
