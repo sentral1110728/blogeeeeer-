@@ -1,20 +1,20 @@
 class CategoriesController < ApplicationController
   def index
-    # TODO SQLでまとめたい
+    # TODO: SQLでまとめたい
     @categories = Category.all
     @category_likes_count =
       Category
-        .joins(articles: :likes)
-        .group("categories.id")
-        .count
+      .joins(articles: :likes)
+      .group('categories.id')
+      .count
     @category_comments_count =
       Category
-        .joins(articles: :comments)
-        .group("categories.id")
-        .count
-    if params[:image] != nil
+      .joins(articles: :comments)
+      .group('categories.id')
+      .count
+    unless params[:image].nil?
       img = MiniMagick::Image.read(params[:image])
-      img.resize "300x300"
+      img.resize '300x300'
     end
   end
 
@@ -52,6 +52,7 @@ class CategoriesController < ApplicationController
   end
 
   private
+
   def category_params
     params.require(:category).permit(:category_name, :image)
   end
