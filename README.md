@@ -1,5 +1,5 @@
 # Blogeeeeer!(アプリ名)
-- 文書管理システム
+- 記事投稿アプリ
 - GitHub</br>
 https://github.com/sentral1110728/blogeeeeer-
 - アプリURL</br>
@@ -108,7 +108,7 @@ http://13.230.224.20
 |Column|Type|Options|
 |------|----|-------|
 |category_name|string|null: false|
-|image|string||
+|image|string|null: false|
 ### Association
 - has_many :articles
 
