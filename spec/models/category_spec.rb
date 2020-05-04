@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
-  # let(:Category) { FactoryBot.create(:category) }
   describe '#create #update' do
     it "category_nameが空では登録できないこと" do
       category = build(:category, category_name: "")
