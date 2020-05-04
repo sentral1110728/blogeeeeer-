@@ -20,4 +20,12 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true,
     length: { maximum: 50 }
+
+  # def self.if_not_admin(current_user)
+  #   unless current_user.blank?
+  #     redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
+  #   else
+  #     redirect_to root_path, notice: '無効なURLです'
+  #   end
+  # end
 end

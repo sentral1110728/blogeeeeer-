@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
   # 指定したアクションはログインしてないと利用できない(ログイン画面に遷移される)
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  # before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[edit update destroy show]
   before_action :set_categories, only: %i[new create search]
-  before_action :if_not_admin, only: %i[new]
+  # before_action :if_not_admin, only: %i[new,create,edit,update,destroy]
 
   def index
     @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s)
@@ -14,8 +14,11 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    if current_user.authority_id == 1
-      redirect_to tops_path, notice: '管理者用機能のため遷移できません。'
+    # User.if_not_admin(current_user)
+    if user_signed_in?
+      redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
+    else
+      redirect_to root_path, notice: '無効なURLです'
     end
     @new_article = Article.new
   end
@@ -42,7 +45,13 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if user_signed_in?
+      redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
+    else
+      redirect_to root_path, notice: '無効なURLです'
+    end
+  end
 
   def update
     if @article.update(article_params)
@@ -57,7 +66,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
   def article_params
     params.require(:article)
           .permit(:title, :content)
@@ -72,11 +80,11 @@ class ArticlesController < ApplicationController
     @category_list = Category.all
   end
 
-  def if_not_admin
-    if user_signed_in?
-      redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
-    else
-      redirect_to root_path, notice: '無効なURLです'
-    end
-  end
+  # def if_not_admin
+  #   if user_signed_in?
+  #     redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
+  #   else
+  #     redirect_to root_path, notice: '無効なURLです'
+  #   end
+  # end
 end
