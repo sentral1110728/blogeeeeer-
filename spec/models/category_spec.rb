@@ -12,7 +12,7 @@ RSpec.describe Category, type: :model do
     it "category_nameが20文字以上であれば登録できないこと" do
       category = build(:category, category_name: "アイウエオアイウエオアイウエオアイウエオあ")
       category.valid?
-      expect(category.errors[:category_name][0]).to include("は20文字以内で入力してください")
+      expect(category.errors[:category_name]).to include("は20文字以内で入力してください")
     end
     it "imageが空では登録できないこと" do
       category = build(:category, image: nil)
