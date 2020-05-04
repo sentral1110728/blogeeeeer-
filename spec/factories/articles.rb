@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :article do
     association :category
     association :user
-    title
-    content 
+    title {"タイトル"}
+    content {"内容"}
   end
 end
