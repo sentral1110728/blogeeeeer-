@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[edit update destroy show]
   before_action :set_categories, only: %i[new create search]
+  before_action :if_not_admin, only: %i[new]
 
   def index
     @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s)
@@ -69,5 +70,13 @@ class ArticlesController < ApplicationController
 
   def set_categories
     @category_list = Category.all
+  end
+
+  def if_not_admin
+    if user_signed_in?
+      redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
+    else
+      redirect_to root_path, notice: '無効なURLです'
+    end
   end
 end
