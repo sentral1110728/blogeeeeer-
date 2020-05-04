@@ -10,4 +10,14 @@ class User < ApplicationRecord
   # userが削除されたときuserに紐付くlikeも削除
   has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :profile
+
+  validates :nickname, 
+    presence: true,
+    uniqueness: true,
+    length: { maximum: 20 }
+
+  validates :email,
+    presence: true,
+    uniqueness: true,
+    length: { maximum: 50 }
 end
