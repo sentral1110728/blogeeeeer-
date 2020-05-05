@@ -48,7 +48,7 @@ http://13.230.224.20
 - jQuery
 - MySQL
 - git(github)
-- AWS(EC2,S3)
+- AWS(EC2,S3,route53)
 
 # point (こだわりポイント)
 - カテゴリーが３つ以上ある場合は改行され、２列に分けられる。
