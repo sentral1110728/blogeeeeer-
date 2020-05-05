@@ -25,7 +25,7 @@ Devise.setup do |config|
   if Rails.env.development?
     config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :twitter_api_key), Rails.application.credentials.dig(:twitter, :twitter_api_secret_key), callback_url: "http://localhost:3000/users/auth/twitter/callback"
   elsif Rails.env.production?
-    config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :twitter_api_key), Rails.application.credentials.dig(:twitter, :twitter_api_secret_key), callback_url: "http://13.230.224.20/users/auth/twitter/callback"
+    config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :twitter_api_key), Rails.application.credentials.dig(:twitter, :twitter_api_secret_key), callback_url: "http://blogeeeeer.com/users/auth/twitter/callback"
   else
     config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :twitter_api_key), Rails.application.credentials.dig(:twitter, :twitter_api_secret_key), callback_url: "http://localhost:3000/users/auth/twitter/callback"
   end
