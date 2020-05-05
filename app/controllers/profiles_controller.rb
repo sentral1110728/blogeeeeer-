@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    @profile = User.find(params[:user_id]).profile
+    @profile = @user.profile
   end
 
   def update
@@ -13,10 +13,15 @@ class ProfilesController < ApplicationController
       # TODO: jpeg以外もアップロードできる様にする
       if edited_profile.update(profile_params)
         if edited_profile.user.update(nickname: params[:profile][:user][:nickname])
-          redirect_to user_path(edited_profile.user_id), notice: 'プロフィールを更新しました'
+          redirect_to user_profile_path(edited_profile.user_id,edited_profile.id), notice: 'プロフィールを更新しました'
         end
       end
     end
+  end
+
+  def show
+    @user = User.find(params[:user_id])
+    @user_profile = @user.profile
   end
 
   private
