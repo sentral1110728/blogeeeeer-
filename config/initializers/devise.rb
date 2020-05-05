@@ -22,7 +22,13 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-
+  if Rails.env.development?
+    config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :twitter_api_key), Rails.application.credentials.dig(:twitter, :twitter_api_secret_key), callback_url: "http://localhost:3000/users/auth/twitter/callback"
+  elsif Rails.env.production?
+    config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :twitter_api_key), Rails.application.credentials.dig(:twitter, :twitter_api_secret_key), callback_url: "http://13.230.224.20/users/auth/twitter/callback"
+  else
+    config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :twitter_api_key), Rails.application.credentials.dig(:twitter, :twitter_api_secret_key), callback_url: "http://localhost:3000/users/auth/twitter/callback"
+  end
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
 
