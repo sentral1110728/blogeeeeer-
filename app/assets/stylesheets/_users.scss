@@ -96,3 +96,18 @@
   width: 300px;
   padding-top: 5px;
 }
+.twitter_login_field{
+  display: flex;
+  justify-content: center;
+}
+.twitter_login_link{
+  background-color: #1da1f2;
+  color: white;
+  padding: 10px;
+  border-radius: 3px;
+  text-decoration: none;
+}
+.twitter_login_msg{
+  padding-left: 10px;
+  font-weight: bold;
+}

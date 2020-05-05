@@ -11,9 +11,9 @@
         <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力してください", class: "password_field" %>
       </div>
 
-      <div style="display:flex;justify-content:center;">
-        <%= link_to user_twitter_omniauth_authorize_path, style: "background-color:#1da1f2;color:white;padding:10px;border-radius:3px;text-decoration:none;" do %>
-          <i class="fab fa-twitter"><span style="padding-left:10px;font-weight:bold;">twitterでログイン</span></i>
+      <div class="twitter_login_field">
+        <%= link_to user_twitter_omniauth_authorize_path, class: "twitter_login_link" do %>
+          <i class="fab fa-twitter"><span class="twitter_login_msg">twitterでログイン</span></i>
         <% end %>
       </div>
 
