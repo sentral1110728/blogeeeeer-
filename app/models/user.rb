@@ -24,14 +24,17 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        nickname: auth.info.nickname,
-        email:    User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
-      )
+    ActiveRecord::Base.transaction do
+      unless user
+        user = User.create(
+          uid:      auth.uid,
+          provider: auth.provider,
+          nickname: auth.info.nickname,
+          email:    User.dummy_email(auth),
+          password: Devise.friendly_token[0, 20]
+        )
+        Profile.create(user_id: user.id)
+      end
     end
 
     user
