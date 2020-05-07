@@ -24,19 +24,23 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    ActiveRecord::Base.transaction do
-      unless user
-        user = User.create(
-          uid:      auth.uid,
-          provider: auth.provider,
-          nickname: auth.info.nickname,
-          email:    User.dummy_email(auth),
-          password: Devise.friendly_token[0, 20]
-        )
-        Profile.create(user_id: user.id)
-      end
+    begin
+      ActiveRecord::Base.transaction {
+        unless user
+          user = User.create!(
+            uid:      auth.uid,
+            provider: auth.provider,
+            nickname: auth.info.nickname,
+            email:    User.dummy_email(auth),
+            password: Devise.friendly_token[0, 20]
+          )
+          Profile.create!(user_id: user.id)
+        end
+      }
+    rescue Exception => e 
+      flash[:notice] = "失敗しました。リトライしてみてください"
+      redirect_to new_user_session_path 
     end
-
     user
   end
 
