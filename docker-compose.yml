@@ -14,8 +14,8 @@ services:
     environment:
       RAILS_ENV: development
     volumes:
-      - .:/bbs_app
+      - .:/blogeeeeer-
     ports:
       - "3000:3000"
-    links:
+    depends_on:
       - db

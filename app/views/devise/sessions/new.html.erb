@@ -1,8 +1,14 @@
 <div class="login_container">
   <div class="login_container_main">
+  <%= render 'layouts/notifications' %>
     <h1 class="page_title">ログイン</h1>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
+      <div style="display:flex;justify-content:center;">
+        <button class="admin_user" style="border-radius:3px;margin:0 10px;">管理者でログイン(TEST用)</button>
+        <button class="general_user" style="border-radius:3px;margin:0 10px;">一般でログイン(TEST用)</button>
+      </div>
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力してください", class: "email_field" %>
       </div>
