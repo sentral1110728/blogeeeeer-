@@ -3,7 +3,7 @@
 - GitHub</br>
 https://github.com/sentral1110728/blogeeeeer-
 - アプリURL</br>
-http://13.230.224.20
+https://blogeeeeer.com
 
 # Test Account(テストアカウント)
 - Email・・・admin@example.jp
@@ -28,6 +28,7 @@ http://13.230.224.20
 - rubocopによる静的コード解析
 - capistrano による AWS EC2 への自動デプロイ 
 - AWS S3 の利用
+- サイトの常時SSL化
 
 ## トップページ
 [![Image from Gyazo](https://i.gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2.jpg)](https://gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2)
@@ -51,13 +52,13 @@ http://13.230.224.20
 - AWS(EC2,S3,route53)
 
 # point (こだわりポイント)
-- カテゴリーが３つ以上ある場合は改行され、２列に分けられる。
+- blogeeeeerサイト内は常時https化している。
 - カテゴリー管理のページで各々のカテゴリーの状況(最新記事の日付、コメント数、いいね数など)が確認できる。
 - コメントや、いいねを非同期で実装した。
 
 # Future Implementation(今後の実装予定)
 ### 優先度(高)
-- 常時SSL化(セキュリティ関係)
+- Cookieにsecure属性をつける
 ### 優先度(低)
 - アカウント作成時メールもしくはsmsにてユーザー確認を行う
 - Facebookでログイン(APIの利用)
