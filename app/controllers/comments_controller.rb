@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   def create
     @article = Article.find(params[:article_id])
-    @comments = @article.comments.includes(:user).order(created_at: :desc)
+    @comments = @article.comments.includes(:user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     @comment = Comment.create(comment_params)
   end
 

@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
 
   def show
     @new_comment = Comment.new
-    @comments = @article.comments.includes([user: :profile]).order(created_at: :desc)
+    @comments = @article.comments.includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
   end
 
   def destroy

@@ -11,10 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-      ActiveRecord::Base.transaction do
-        super
-        Profile.create(user_id: session[:user_id])
-      end
+    ActiveRecord::Base.transaction do
+      super
+      Profile.create(user_id: current_user)
+    end
   end
 
   # GET /resource/edit

@@ -6,10 +6,9 @@
       <%= link_to "#{current_user.nickname}さんのマイページ", user_profile_path(current_user.id,current_user.profile), class: "header__my_page" %>
       <%= link_to "ログアウト", destroy_user_session_path, class: "header__new_account", method: :delete %>
       <% if current_user.authority_id == 2 %>
-        <% if Category.all.length > 0 %>
-          <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
-        <% end %>
-        <%= link_to "カテゴリー管理", categories_path, class: "header__new_article" %>
+        <a id="hamburger" href="javascript:void(0)" style="line-height:30px;">
+          <i class="fas fa-bars"></i>
+        </a>
       <% end %>
     <% else%>
       <%= link_to "ログイン", new_user_session_path, class: "header__new_account" %>
