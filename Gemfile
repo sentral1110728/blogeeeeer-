@@ -61,6 +61,7 @@ group :development do
   gem 'ruby-debug-ide'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-byebug'
 end
 
 group :test do
