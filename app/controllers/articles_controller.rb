@@ -33,6 +33,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @category = @article.category
     @new_comment = Comment.new
     @comments = @article.comments.includes([user: :profile]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
   end

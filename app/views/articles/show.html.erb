@@ -9,6 +9,11 @@
             <%= link_to "編集", edit_article_path, class: "article_edit" %>
             <%= link_to "削除", article_path, class: "article_delete", method: :delete %>
           <% end %>
+          <span class="article_show_like">
+            <%= render partial: 'likes/like_link' %>
+          </span>
+        <% else %>
+          <span style="color:black;"><i class="far fa-thumbs-up"><%= @article.likes.length %></i></span>
         <% end %>
       </div>
     </div>
