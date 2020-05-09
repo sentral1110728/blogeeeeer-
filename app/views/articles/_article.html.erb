@@ -10,7 +10,16 @@
       <span class="article_content__option__created_at"><%= article.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d") %></span>
       <i class="far fa-comment-dots"><%= article.comments.length %></i>
       <div class="like_field">
-        <%= render partial: 'likes/like_link', locals:{ art: article } %>
+        <% if user_signed_in? %>
+          <% if article.like_user(current_user.id) %>
+            <span style="color:black;"><i class="far fa-thumbs-up" id="article_like_<%= article.id %>" style="color:#CCCC00;"><%= article.likes.length %></i></span>
+            済み
+          <% else %>
+            <span><i class="far fa-thumbs-up" id="article_like_<%= article.id %>"><%= article.likes.length %></i></span>
+          <% end %>
+        <% else %>
+          <span style="color:black;"><i class="far fa-thumbs-up"><%= article.likes.length %></i></span>
+        <% end %>
       </div>
     </div>
   </div>
