@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :profile
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+
   validates :nickname, 
     presence: true,
     uniqueness: true,
@@ -18,8 +21,12 @@ class User < ApplicationRecord
 
   validates :email,
     presence: true,
+    format: { with: VALID_EMAIL_REGEX },
     uniqueness: true,
     length: { maximum: 50 }
+
+  validates :password,
+    format: { with: VALID_PASSWORD_REGEX }
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
