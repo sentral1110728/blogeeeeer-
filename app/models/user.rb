@@ -3,13 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
-  has_many :articles
-  has_many :comments
-  has_one :profile
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_one :profile, dependent: :destroy
   belongs_to :authority
   # userが削除されたときuserに紐付くlikeも削除
   has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :profile
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
 
   validates :nickname, 
     presence: true,
@@ -18,8 +21,12 @@ class User < ApplicationRecord
 
   validates :email,
     presence: true,
+    format: { with: VALID_EMAIL_REGEX },
     uniqueness: true,
     length: { maximum: 50 }
+
+  validates :password,
+    format: { with: VALID_PASSWORD_REGEX }
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

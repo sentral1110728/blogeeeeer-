@@ -5,10 +5,6 @@ https://github.com/sentral1110728/blogeeeeer-
 - アプリURL</br>
 https://blogeeeeer.com
 
-# Test Account(テストアカウント)
-- Email・・・admin@example.jp
-- password・・・11111111
-
 # Overview(概要)
 このアプリは某番組(鉄腕DASHのDASH村)をネット上で運営するならどうするかを考え作成しました。</br>
 日々活動した内容をカテゴリー別に記事にでき、ユーザーはコメントやいいねをすることができます。</br>
@@ -24,9 +20,9 @@ https://blogeeeeer.com
 - 記事に対してのいいね機能(非同期)。
 - 記事の検索機能。
 - twitterでログイン(APIの利用)
-- RSpec を使った単体テスト
+- RSpecを使ったテスト
 - rubocopによる静的コード解析
-- capistrano による AWS EC2 への自動デプロイ 
+- capistranoによるAWS EC2への自動デプロイ 
 - AWS S3 の利用
 - サイトの常時SSL化
 
@@ -49,7 +45,7 @@ https://blogeeeeer.com
 - jQuery
 - MySQL
 - git(github)
-- AWS(EC2,S3,route53)
+- AWS(EC2,S3,route53,ACM)
 
 # point (こだわりポイント)
 - blogeeeeerサイト内は常時https化している。
@@ -59,8 +55,12 @@ https://blogeeeeer.com
 # Future Implementation(今後の実装予定)
 ### 優先度(高)
 - Cookieにsecure属性をつける(他のセキュリティ関係も)
-### 優先度(低)
 - アカウント作成時メールもしくはsmsにてユーザー確認を行う
+- Dockerの利用
+- CI/CDツールの利用
+- AWS ECSの利用
+- モバイル対応
+### 優先度(低)
 - Facebookでログイン(APIの利用)
 - 商品の登録機能
 - 商品購入(カート・クレジット・ポイント機能)
@@ -71,13 +71,10 @@ https://blogeeeeer.com
 - 削除は基本的に論理削除にする
 - コメントの編集・削除機能
 - 新着記事アイコン表示
-- モバイル対応
-- CI/CDツールの利用
-- AWS ECSの利用
-- Dockerの利用
 
 ### 反省点
 - 一機能ずつテストしていなかった為、一通りの機能を実装し終わったところで、バグが次々と見つかった。
+- 最初にDB設計をきちんと行わなかったので、DB構造の変更をたくさんしてしまった。
 
 ## authoritiesテーブル
 |Column|Type|Options|
@@ -91,10 +88,13 @@ https://blogeeeeer.com
 |------|----|-------|
 |authority_id|integer|null: false, foreign_key: true|
 |nickname|string|null: false|
+|email|string|unique: true, null: false|
+|uid|string||
+|provider|string||
 ### Association
-- has_many :articles
-- has_many :comments
-- has_one :profile
+- has_many :articles, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_one :profile, dependent: :destroy
 - belongs_to :authority
 - has_many :likes, dependent: :destroy
 - accepts_nested_attributes_for :profile
@@ -114,19 +114,19 @@ https://blogeeeeer.com
 |category_name|string|null: false|
 |image|string|null: false|
 ### Association
-- has_many :articles
+- has_many :articles, dependent: :destroy
 
 ## articlesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |category_id|integer|foreign_key: true|
 |user_id|integer|foreign_key: true|
-|title|string|null: false|
+|title|string|null: false, index: true|
 |content|text|null: false|
 ### Association
 - has_many :likes, dependent: :destroy
 - belongs_to :user
-- has_many :comments
+- has_many :comments, dependent: :destroy
 - belongs_to :category
 
 ## commentsテーブル
