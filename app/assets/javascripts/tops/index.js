@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
-    const openBtn = $("#hamburger");
+    const openBtn = $("#admin_menu");
     const closeBtn = $("#close");
     const overlay = $("#overlay");
     const panel = $("#drawer-menu");

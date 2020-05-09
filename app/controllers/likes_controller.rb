@@ -4,6 +4,7 @@ class LikesController < ApplicationController
   def create
     if @user_like.empty?
       @like = current_user.likes.create(article_id: params[:article_id])
+      render 'index.js.erb'
     end
   end
 
@@ -11,6 +12,7 @@ class LikesController < ApplicationController
     if @user_like.length == 1
       like = current_user.likes.find_by(article_id: params[:article_id])
       like.destroy
+      render 'index.js.erb'
     end
   end
 
@@ -24,7 +26,7 @@ class LikesController < ApplicationController
     @article_like_count = Article.find(params[:article_id]).likes
     @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s)
                        .includes([user: :profile])
-                       .paginate(page: params[:page], per_page: 10)
+                       .paginate(page: params[:page], per_page: 5)
                        .order(created_at: :desc)
   end
 end

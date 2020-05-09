@@ -26,14 +26,14 @@
         <% end %>
       </div>
     <% end %>
-    <% if @comments.length > 0 %>
-      <div class="comments_field">
+    <div class="comments_field">
+      <% if @comments.length > 0 %>
         コメント一覧
         <%= render @comments %>
         <%= will_paginate @comments, :param_name => 'page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-      </div>
-    <% else %>
-      <p class="no_comment_msg">※コメントは0件です</p>
-    <% end %>
+      <% else %>
+        <p class="no_comment_msg">※コメントは0件です</p>
+      <% end %>
+    </div>
   </div>
 </div>

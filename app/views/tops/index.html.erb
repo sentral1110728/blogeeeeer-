@@ -18,22 +18,4 @@
     </div>
   <% end %>
 </div>
-
-<div id="overlay">
-</div>
-<div id="drawer-menu">
-  <ul>
-    <% if Category.all.length > 0 %>
-      <li>
-        <%= link_to "新規作成", new_article_path, class: "header__new_article" %>
-      </li>
-    <% end %>
-    <li>
-      <%= link_to "カテゴリー管理", categories_path, class: "header__new_article" %>
-    </li>
-  </ul>
-  <a id="close" href="javascript:void(0)">
-    <i class="fas fa-times" style="color:white;font-size:30px;"></i>
-  </a>
-</div>
 <%= render 'shared/footer' %>
