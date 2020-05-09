@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
-  has_many :articles
-  has_many :comments
-  has_one :profile
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_one :profile, dependent: :destroy
   belongs_to :authority
   # userが削除されたときuserに紐付くlikeも削除
   has_many :likes, dependent: :destroy
