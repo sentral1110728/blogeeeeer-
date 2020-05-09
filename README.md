@@ -54,11 +54,11 @@ https://blogeeeeer.com
 # point (こだわりポイント)
 - blogeeeeerサイト内は常時https化している。
 - カテゴリー管理のページで各々のカテゴリーの状況(最新記事の日付、コメント数、いいね数など)が確認できる。
-- コメントや、いいねを非同期で実装した。
+- いいねやコメントを非同期で表示させている。
 
 # Future Implementation(今後の実装予定)
 ### 優先度(高)
-- Cookieにsecure属性をつける
+- Cookieにsecure属性をつける(他のセキュリティ関係も)
 ### 優先度(低)
 - アカウント作成時メールもしくはsmsにてユーザー確認を行う
 - Facebookでログイン(APIの利用)
@@ -75,6 +75,9 @@ https://blogeeeeer.com
 - CI/CDツールの利用
 - AWS ECSの利用
 - Dockerの利用
+
+### 反省点
+- 一機能ずつテストしていなかった為、一通りの機能を実装し終わったところで、バグが次々と見つかった。
 
 ## authoritiesテーブル
 |Column|Type|Options|
