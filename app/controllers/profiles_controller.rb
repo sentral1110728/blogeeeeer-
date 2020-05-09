@@ -9,14 +9,16 @@ class ProfilesController < ApplicationController
 
   def update
     edited_profile = Profile.find(params[:id])
-    ActiveRecord::Base.transaction do
-      # TODO: jpeg以外もアップロードできる様にする
-      if edited_profile.update(profile_params)
-        if edited_profile.user.update(nickname: params[:profile][:user][:nickname])
-          redirect_to user_profile_path(edited_profile.user_id,edited_profile.id), notice: 'プロフィールを更新しました'
-        end
+    begin
+      ActiveRecord::Base.transaction do
+        edited_profile.update(profile_params)
+        edited_profile.user.update(nickname: params[:profile][:user][:nickname])
       end
+    rescue Exception => e 
+      flash[:notice] = "失敗しました。リトライしてみてください"
+      render "edit" 
     end
+    redirect_to user_profile_path(edited_profile.user_id,edited_profile.id), notice: 'プロフィールを更新しました'
   end
 
   def show
