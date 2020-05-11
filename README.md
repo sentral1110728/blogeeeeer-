@@ -6,15 +6,22 @@ https://github.com/sentral1110728/blogeeeeer-
 https://blogeeeeer.com
 
 # Overview(概要)
-このアプリは某番組(鉄腕DASHのDASH村)をネット上で運営するならどうするかを考え作成しました。</br>
-日々活動した内容をカテゴリー別に記事にでき、ユーザーはコメントやいいねをすることができます。</br>
-カテゴリー管理画面では、それぞれのカテゴリーに紐付くデータ(記事数、コメント数、いいね数、最新記事の日付など)を確認することができます。
+このアプリは記事投稿アプリです。</br>
+権限によって利用できるサービスが違います。</br>
+・管理者アカウント</br>
+カテゴリーを作成し、そのカテゴリーに紐づいた記事を投稿することができます。</br>
+記事の投稿・編集の際はsummernoteエディターを使用しているため、コーディネートされた記事を投稿することができます。</br>
+投稿された記事に対してコメントしたり、いいねをつけたりすることができます。</br>
+・一般アカウント</br>
+投稿された記事に対してコメントしたり、いいねをつけたりすることができます。</br>
+・未ログイン者</br>
+記事の閲覧のみの利用になります。
 
 # Features(機能)
 - ユーザーとユーザーに紐づくプロフィール作成機能。
 - プロフィールの編集機能。
 - カテゴリー作成・編集・削除機能。
-- 記事作成・編集・削除機能。
+- 記事作成・編集・削除機能。(summernoteエディターによる作成、編集)
 - 記事のページング機能
 - 記事に対してのコメント作成機能(非同期)。
 - 記事に対してのいいね機能(非同期)。
@@ -45,7 +52,7 @@ https://blogeeeeer.com
 - jQuery
 - MySQL
 - git(github)
-- AWS(EC2,S3,route53,ACM)
+- AWS(EC2,ELB,S3,route53,ACM)
 
 # point (こだわりポイント)
 - blogeeeeerサイト内は常時https化している。
@@ -122,7 +129,7 @@ https://blogeeeeer.com
 |category_id|integer|foreign_key: true|
 |user_id|integer|foreign_key: true|
 |title|string|null: false, index: true|
-|content|text|null: false|
+|content|longtext|null: false|
 ### Association
 - has_many :likes, dependent: :destroy
 - belongs_to :user

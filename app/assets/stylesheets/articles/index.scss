@@ -29,7 +29,7 @@ p{
 .header__image{
   background-size:  cover;
   background-position: 60% 30%;
-  height: 600px;
+  height: 400px;
   width: 100%;
   position: relative;
 }
@@ -81,13 +81,10 @@ p{
     border-bottom: 1px solid black;
   }
   &_text{
-    text-align: center;
-    padding-top: 20px;
+    padding-left: 20px;
     color: #BBBBBB;
   }
   &__option{
-    position: absolute;
-    bottom:0;
     display: flex;
     font-size: 15px;
     color:#BBBBBB;

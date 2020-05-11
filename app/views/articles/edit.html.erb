@@ -6,7 +6,7 @@
       <div class="container_main__new_article_field">
         <%= f.hidden_field :category_id %>
         <%= f.text_field :title, placeholder: "titleの入力", class: "container_main__new_article_field__input_title_field" %>
-        <%= f.text_area :content, placeholder: "内容の入力", class: "container_main__new_article_field__input_content_field" %>
+        <%= f.text_area :content, 'data-provider': :summernote, placeholder: "内容の入力", class: "container_main__new_article_field__input_content_field" %>
       </div>
       <div class="container_main__btn_field">
         <%= f.submit "更新", class: "container_main__btn_field__send" %>

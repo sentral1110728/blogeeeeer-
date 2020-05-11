@@ -3,23 +3,24 @@
     <h2>
       <%= link_to "#{article.title}", article_path(article.id), class: "article_content__title" %>
     </h2>
-    <div class="article_content_text">
-      <%= article.content.truncate(30, omission: '...') %>
-    </div>
-    <div class="article_content__option">
-      <span class="article_content__option__created_at"><%= article.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d") %></span>
-      <i class="far fa-comment-dots"><%= article.comments.length %></i>
-      <div class="like_field">
-        <% if user_signed_in? %>
-          <% if article.like_user(current_user.id) %>
-            <span style="color:black;"><i class="far fa-thumbs-up" id="article_like_<%= article.id %>" style="color:#CCCC00;"><%= article.likes.length %></i></span>
-            済み
+    <div style="display:flex;justify-content:flex-start;padding-top:20px;">
+      <div class="article_content__option">
+        <span class="article_content__option__created_at"><%= article.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d") %></span>
+        <i class="far fa-comment-dots"><%= article.comments.length %></i>
+        <div class="like_field">
+          <% if user_signed_in? %>
+            <% if article.like_user(current_user.id) %>
+              <span style="color:black;"><i class="far fa-thumbs-up" id="article_like_<%= article.id %>" style="color:#CCCC00;"><%= article.likes.length %></i></span>
+            <% else %>
+              <span><i class="far fa-thumbs-up" id="article_like_<%= article.id %>"><%= article.likes.length %></i></span>
+            <% end %>
           <% else %>
-            <span><i class="far fa-thumbs-up" id="article_like_<%= article.id %>"><%= article.likes.length %></i></span>
+            <span style="color:black;"><i class="far fa-thumbs-up"><%= article.likes.length %></i></span>
           <% end %>
-        <% else %>
-          <span style="color:black;"><i class="far fa-thumbs-up"><%= article.likes.length %></i></span>
-        <% end %>
+        </div>
+      </div>
+      <div class="article_content_text">
+        <%= simple_format article.content.html_safe.truncate(35) %>
       </div>
     </div>
   </div>
