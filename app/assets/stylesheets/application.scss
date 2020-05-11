@@ -14,14 +14,19 @@
  *= require_self
  */
 
+ @import "summernote-bs4";
  @import "./normalize";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
  @import "./shared/header";
  @import "./articles/index";
  @import "./articles/new";
  @import "./articles/show";
  @import "./users";
+//  @import "summernote-bs4";
+//  @import "summernote/summernote";
 
 .notice{
   padding: 10px 0;
