@@ -17,3 +17,7 @@ document.addEventListener('turbolinks:load', function(){
 		document.getElementsByClassName('panel')[index].classList.add('is-show');
 	};
 });
+
+$(window).on("load", function(){
+  $(".note-insert").remove();
+});
