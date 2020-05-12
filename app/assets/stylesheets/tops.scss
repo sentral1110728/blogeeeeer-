@@ -14,6 +14,9 @@ footer{
 .content__main{
   margin-top: 100px;
   margin-bottom: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 .content__title{
   text-align: center;
@@ -30,8 +33,8 @@ footer{
   text-decoration: none;
 }
 .col{
-  height: 220px;
-  width: 250px;
+  height: 200px;
+  width: 220px;
   border: 1px solid gray;
 }
 .category-name{
@@ -137,4 +140,43 @@ header {
           }
       }
   }
+}
+.rank_article{
+  border-bottom: 1px gray solid;
+  width: 200px;
+  height: 80px;
+  // position: relative;
+  margin-top: 20px;
+  border-radius: 3px;
+  position: relative;
+  &__number{
+    position: absolute;
+  }
+  &__category_name{
+    margin-left: 20px;
+  }
+  &__title{
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  &__likes_count{
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+  }
+  &__content{
+    padding-left: 30px;
+    text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+.rank_article:hover{
+  background-color: #FFEEFF;
 }
