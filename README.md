@@ -22,6 +22,7 @@ https://blogeeeeer.com
 - プロフィールの編集機能。
 - カテゴリー作成・編集・削除機能。
 - 記事作成・編集・削除機能。(summernoteエディターによる作成、編集)
+- いいね数での記事ランキングの表示
 - 記事のページング機能
 - 記事に対してのコメント作成機能(非同期)。
 - 記事に対してのいいね機能(非同期)。
@@ -31,7 +32,7 @@ https://blogeeeeer.com
 - rubocopによる静的コード解析
 - capistranoによるAWS EC2への自動デプロイ 
 - AWS S3 の利用
-- サイトの常時SSL化
+- AWS ACMでサイトの常時SSL化
 
 ## トップページ
 [![Image from Gyazo](https://i.gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2.jpg)](https://gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2)
