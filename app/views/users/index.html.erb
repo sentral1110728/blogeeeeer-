@@ -1,0 +1,24 @@
+<div style="margin:20px;">
+  <h2 style="margin:30px;text-align:center;">ユーザー一覧</h2>
+  <table class="table table-striped">
+    <tr>
+      <th>ニックネーム</th>
+      <th>メールアドレス</th>
+      <th>権限</th>
+      <%# <th></th>
+      <th></th> %>
+    </tr>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.nickname %></td>
+          <td><%= user.email %></td>
+          <td><%= user.authority.name %></td>
+          <%# <td><button href="#" class="btn btn-primary">権限の変更</button></td>
+          <td><button href="#" class="btn btn-danger">削除</button></td> %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @articles, :param_name => 'page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+</div>
