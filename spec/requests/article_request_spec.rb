@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Articles", type: :request do
+RSpec.describe 'Articles', type: :request do
   let(:user) { create(:user) }
   let(:category) { create(:category) }
   let(:article) { create(:article) }

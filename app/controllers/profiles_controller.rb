@@ -14,11 +14,12 @@ class ProfilesController < ApplicationController
         edited_profile.update(profile_params)
         edited_profile.user.update(nickname: params[:profile][:user][:nickname])
       end
-    rescue Exception => e 
-      flash[:notice] = "失敗しました。リトライしてみてください"
-      render "edit" 
+    rescue Exception => e
+      puts e
+      flash[:notice] = '失敗しました。リトライしてみてください'
+      render 'edit'
     end
-    redirect_to user_profile_path(edited_profile.user_id,edited_profile.id), notice: 'プロフィールを更新しました'
+    redirect_to user_profile_path(edited_profile.user_id, edited_profile.id), notice: 'プロフィールを更新しました'
   end
 
   def show
