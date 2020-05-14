@@ -61,6 +61,7 @@ GEM
       sassc (>= 2.0.0)
     bootstrap-will_paginate (1.0.0)
       will_paginate
+    brakeman (4.8.2)
     builder (3.2.4)
     byebug (11.1.1)
     capistrano (3.12.1)
@@ -374,6 +375,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass
   bootstrap-will_paginate
+  brakeman
   byebug
   capistrano
   capistrano-bundler
