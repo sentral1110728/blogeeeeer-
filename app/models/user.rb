@@ -11,42 +11,43 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i.freeze
 
-  validates :nickname, 
-    presence: true,
-    uniqueness: true,
-    length: { maximum: 20 }
+  validates :nickname,
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 20 }
 
   validates :email,
-    presence: true,
-    format: { with: VALID_EMAIL_REGEX },
-    uniqueness: true,
-    length: { maximum: 50 }
+            presence: true,
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: true,
+            length: { maximum: 50 }
 
   validates :password,
-    format: { with: VALID_PASSWORD_REGEX }
+            format: { with: VALID_PASSWORD_REGEX }
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
     begin
-      ActiveRecord::Base.transaction {
+      ActiveRecord::Base.transaction do
         unless user
           user = User.create!(
-            uid:      auth.uid,
+            uid: auth.uid,
             provider: auth.provider,
             nickname: auth.info.nickname,
-            email:    User.dummy_email(auth),
+            email: User.dummy_email(auth),
             password: Devise.friendly_token[0, 20]
           )
           Profile.create!(user_id: user.id)
         end
-      }
-    rescue Exception => e 
-      flash[:notice] = "失敗しました。リトライしてみてください"
-      redirect_to new_user_session_path 
+      end
+    rescue Exception => e
+      puts e
+      flash[:notice] = '失敗しました。リトライしてみてください'
+      redirect_to new_user_session_path
     end
     user
   end

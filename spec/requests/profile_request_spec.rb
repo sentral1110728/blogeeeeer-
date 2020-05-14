@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Profiles", type: :request do
+RSpec.describe 'Profiles', type: :request do
   let(:profile) { create(:profile) }
 
   describe 'GET #edit 未ログイン' do
@@ -21,18 +21,17 @@ RSpec.describe "Profiles", type: :request do
     end
     it 'ユーザー名が表示されていること' do
       get user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.user.nickname}"
+      expect(response.body).to include profile.user.nickname.to_s
     end
     it '自己紹介が表示されていること' do
       get user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.appeal}"
+      expect(response.body).to include profile.appeal.to_s
     end
     it 'プロフィール画像が表示されていること' do
       get user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.user_image}"
+      expect(response.body).to include profile.user_image.to_s
     end
   end
-
 
   describe 'GET #show 一般ログイン' do
     before do
@@ -44,15 +43,15 @@ RSpec.describe "Profiles", type: :request do
     end
     it 'ユーザー名が表示されていること' do
       get user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.user.nickname}"
+      expect(response.body).to include profile.user.nickname.to_s
     end
     it '自己紹介が表示されていること' do
       get user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.appeal}"
+      expect(response.body).to include profile.appeal.to_s
     end
     it 'プロフィール画像が表示されていること' do
       get user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.user_image}"
+      expect(response.body).to include profile.user_image.to_s
     end
   end
 
@@ -66,15 +65,15 @@ RSpec.describe "Profiles", type: :request do
     end
     it 'ユーザー名が表示されていること' do
       get edit_user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.user.nickname}"
+      expect(response.body).to include profile.user.nickname.to_s
     end
     it '自己紹介が表示されていること' do
       get edit_user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.appeal}"
+      expect(response.body).to include profile.appeal.to_s
     end
     it 'プロフィール画像が表示されていること' do
       get edit_user_profile_path(profile.user_id, profile.id)
-      expect(response.body).to include "#{profile.user_image}"
+      expect(response.body).to include profile.user_image.to_s
     end
   end
 end

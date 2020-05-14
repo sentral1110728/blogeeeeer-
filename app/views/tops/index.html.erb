@@ -24,12 +24,12 @@
     <% @like_article_ranking.each.with_index(1) do |rank, i| %>
       <%= link_to article_path(rank), style: "text-decoration:none;" do %>
         <div class="rank_article">
-          <span class="rank_article__number"><%= i %></span>
+          <span class="rank_article__number_<%= i %>"><%= i %>位</span>
           <span class="rank_article__category_name"><%= rank.category.category_name %></span>
-          <h3 class="rank_article__title"><%= rank.title %></h3>
+          <p class="rank_article__title"><%= rank.title %></p>
           <span class="rank_article__likes_count">
-            <i class="far fa-thumbs-up" style="padding-left:0;"></i>
-            <%= rank.likes.length %>
+            <i class="far fa-thumbs-up" style="padding-left:0;"><%= rank.likes.length %></i>
+            
           </span>
           <p class="rank_article__content"><%= rank.content %></p>
         </div>

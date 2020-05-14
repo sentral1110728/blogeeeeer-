@@ -11,17 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    begin
-      ActiveRecord::Base.transaction {
-        super
-        if current_user
-          @profile = Profile.create(user_id: current_user.id)
-        end
-      }
-    rescue Exception => e 
-      flash[:notice] = "失敗しました。リトライしてみてください"
-      render "new" 
+    ActiveRecord::Base.transaction do
+      super
+      @profile = Profile.create(user_id: current_user.id) if current_user
     end
+  rescue Exception => e
+    puts e
+    flash[:notice] = '失敗しました。リトライしてみてください'
+    render 'new'
   end
 
   # GET /resource/edit

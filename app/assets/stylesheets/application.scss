@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
+ $app_color: #C73C2E;
+ 
  @import "summernote-bs4";
  @import "./normalize";
  @import 'font-awesome-sprockets';

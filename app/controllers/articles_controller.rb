@@ -7,16 +7,18 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.where('category_id LIKE(?)', params[:category_id].to_s)
-                        .includes([user: :profile])
-                        .paginate(page: params[:page], per_page: 5)
-                        .order(created_at: :desc)
+                       .includes([user: :profile])
+                       .paginate(page: params[:page], per_page: 5)
+                       .order(created_at: :desc)
     @category = Category.find(params[:category_id])
   end
 
   def new
     # User.if_not_admin(current_user)
     if user_signed_in?
-      redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
+      unless current_user.authority_id == 2
+        redirect_to root_path, notice: '無効なURLです'
+      end
     else
       redirect_to root_path, notice: '無効なURLです'
     end
@@ -48,7 +50,9 @@ class ArticlesController < ApplicationController
 
   def edit
     if user_signed_in?
-      redirect_to root_path, notice: '無効なURLです' unless current_user.authority_id == 2
+      unless current_user.authority_id == 2
+        redirect_to root_path, notice: '無効なURLです'
+      end
     else
       redirect_to root_path, notice: '無効なURLです'
     end
@@ -67,6 +71,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
     params.require(:article)
           .permit(:title, :content)
