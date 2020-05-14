@@ -5,8 +5,8 @@
       <th>ニックネーム</th>
       <th>メールアドレス</th>
       <th>権限</th>
-      <%# <th></th>
-      <th></th> %>
+      <th></th>
+      <%# <th></th> %>
     </tr>
     <tbody>
       <% @users.each do |user| %>
@@ -14,11 +14,42 @@
           <td><%= user.nickname %></td>
           <td><%= user.email %></td>
           <td><%= user.authority.name %></td>
-          <%# <td><button href="#" class="btn btn-primary">権限の変更</button></td>
-          <td><button href="#" class="btn btn-danger">削除</button></td> %>
+          <td><button href="#" class="JS_Click_ShowModal_Trigger btn btn-danger">権限の変更</button></td>
+          <div class="ModalLayer">
+          <div class="ModalLayer-Mask"></div>
+          <div class="ModalLayer-Inner">
+            <div class="ModalSection">
+              <div class="Modal">
+                <div class="Modal-Inner">
+                  <div class="Modal-Inner-Headline" style="padding-bottom:20px;">
+                    <h2><%= user.nickname %></h2>
+                  </div>
+                  <div class="Modal-Inner-Text">
+                    <p style="padding-bottom:20px;">権限を選択してください</p>
+                    <%= form_with(model: user, local: true, method: :patch) do |f| %>
+                      <div style="display:flex;justify-content:center;">
+                        <div style="padding:0 20px;">
+                          <%= f.radio_button(:authority_id, 2) %>
+                          <%= f.label(:authority_id, "管理者", value: user.authority_id)  %>
+                        </div>
+                        <div style="padding:0 20px;">
+                          <%= f.radio_button(:authority_id, 1) %>
+                          <%= f.label(:authority_id, "一般", value: user.authority_id)  %>
+                        </div>
+                      </div>
+                      <%= f.submit "更新", style: "margin:20px 0;" %>
+                    <% end %>
+                    <%= user.authority_id %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         </tr>
       <% end %>
     </tbody>
   </table>
   <%= will_paginate @articles, :param_name => 'page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 </div>
+
