@@ -1,24 +1,62 @@
+<%= render 'shared/header' %>
 <div style="margin:20px;">
   <h2 style="margin:30px;text-align:center;">ユーザー一覧</h2>
   <table class="table table-striped">
     <tr>
+      <th>ID</th>
       <th>ニックネーム</th>
       <th>メールアドレス</th>
       <th>権限</th>
-      <%# <th></th>
-      <th></th> %>
+      <th></th>
+      <%# <th></th> %>
     </tr>
     <tbody>
       <% @users.each do |user| %>
+        <script>
+          $(document).on('turbolinks:load', function() {
+            $('.JS_Click_ShowModal_Trigger<%=user.id%>').on('click', function(){
+              $('.ModalLayer_<%=user.id%>').addClass('isShow');
+            });
+            // オーバーレイをタップでモーダル閉じる
+            $('.ModalLayer-Mask<%=user.id%>').on('click', function(){
+              $('.ModalLayer_<%=user.id%>').removeClass('isShow');
+            });
+          });
+        </script>
         <tr>
+          <td><%= user.id %></td>
           <td><%= user.nickname %></td>
           <td><%= user.email %></td>
           <td><%= user.authority.name %></td>
-          <%# <td><button href="#" class="btn btn-primary">権限の変更</button></td>
-          <td><button href="#" class="btn btn-danger">削除</button></td> %>
+          <td><button class="JS_Click_ShowModal_Trigger<%=user.id%> btn btn-primary">権限の変更</button></td>
         </tr>
+
+        <%# 権限変更モーダル %>
+        <div class="ModalLayer_<%=user.id%>">
+        <div class="ModalLayer-Mask<%=user.id%>"></div>
+        <div class="ModalLayer-Inner">
+          <div class="ModalSection">
+            <div class="Modal">
+              <div class="Modal-Inner-Headline" style="padding-bottom:20px;">
+                <h2><%= user.nickname %></h2>
+              </div>
+              <div class="Modal-Inner-Text">
+                <p style="padding-bottom:20px;">権限を選択してください</p>
+                <%= form_with(model: user, local: true, method: :patch) do |f| %>
+                  <div style="display:flex;justify-content:space-around;">
+                    <%= f.collection_radio_buttons(:authority_id, @authorities,:id,:name) do |b| %>
+                      <div><%= b.radio_button %><%= b.label %></div>
+                    <% end %>
+                  </div>
+                  <%= f.submit "更新", style: "margin:20px 0;" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </tbody>
   </table>
   <%= will_paginate @articles, :param_name => 'page', :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 </div>
+
