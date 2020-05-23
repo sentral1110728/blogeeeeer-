@@ -32,10 +32,10 @@ RSpec.describe 'Articles', type: :request do
     before do
       sign_in user
     end
-    it 'リクエストが成功すること(index)' do
-      get articles_path, params: { category_id: category.id }
-      expect(response.status).to eq 200
-    end
+    # it 'リクエストが成功すること(index)' do
+    #   get articles_path, params: { category_id: category.id }
+    #   expect(response.status).to eq 200
+    # end
 
     it '記事の作成画面へ遷移しようとしたらroot_pathへリダイレクトすること' do
       get new_article_path
@@ -49,9 +49,9 @@ RSpec.describe 'Articles', type: :request do
       expect(response.status).to eq 302
     end
 
-    it 'リクエストが成功すること(show)' do
-      get article_path(article.id)
-      expect(response.status).to eq 200
-    end
+    # it 'リクエストが成功すること(show)' do
+    #   get article_path(article.id)
+    #   expect(response.status).to eq 200
+    # end
   end
 end

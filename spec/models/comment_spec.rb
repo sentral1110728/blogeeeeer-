@@ -6,7 +6,7 @@ RSpec.describe Comment, type: :model do
   it 'commentが空では登録できないこと' do
     comment = build(:comment, comment: '')
     comment.valid?
-    expect(comment.errors[:comment]).to include('を入力してください')
+    expect(comment.errors[:comment]).to include('が入力されていません。')
   end
   it 'commentが存在すれば登録できること' do
     comment = build(:comment)
