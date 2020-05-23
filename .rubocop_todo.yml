@@ -220,6 +220,8 @@ Style/MixinUsage:
 # Configuration parameters: Strict.
 Style/NumericLiterals:
   MinDigits: 11
+  Exclude:
+    - 'db/schema.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
