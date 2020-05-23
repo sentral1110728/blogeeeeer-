@@ -18,6 +18,7 @@ https://blogeeeeer.com
 記事の閲覧のみの利用になります。
 
 # Features(機能)
+## クライアントサイド
 - ユーザーとユーザーに紐づくプロフィール作成機能。
 - プロフィールの編集機能。
 - カテゴリー作成・編集・削除機能。
@@ -28,11 +29,15 @@ https://blogeeeeer.com
 - 記事に対してのいいね機能(非同期)。
 - 記事の検索機能。
 - twitterでログイン(APIの利用)
+## サーバーサイド
 - RSpecを使ったテスト
 - rubocopによる静的コード解析
 - capistranoによるAWS EC2への自動デプロイ 
 - AWS S3 の利用
 - AWS ACMでサイトの常時SSL化
+- 開発環境をdockerで構築
+- circleCIでビルドとテスト(rspecとrubocopも動かす)
+- circleCI実行結果をslackに通知
 
 ## トップページ
 [![Image from Gyazo](https://i.gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2.jpg)](https://gyazo.com/dfe6eb977e0d2bc826ede247a1a6f7d2)
@@ -64,8 +69,6 @@ https://blogeeeeer.com
 ### 優先度(高)
 - Cookieにsecure属性をつける(他のセキュリティ関係も)
 - アカウント作成時メールもしくはsmsにてユーザー確認を行う
-- Dockerの利用
-- CI/CDツールの利用
 - AWS ECSの利用
 - モバイル対応
 ### 優先度(低)
