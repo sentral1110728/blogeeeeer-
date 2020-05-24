@@ -6,17 +6,17 @@ RSpec.describe Category, type: :model do
     it 'category_nameが空では登録できないこと' do
       category = build(:category, category_name: '')
       category.valid?
-      expect(category.errors[:category_name]).to include('を入力してください')
+      expect(category.errors[:category_name]).to include('が入力されていません。')
     end
     it 'category_nameが20文字以上であれば登録できないこと' do
       category = build(:category, category_name: 'アイウエオアイウエオアイウエオアイウエオあ')
       category.valid?
-      expect(category.errors[:category_name]).to include('は20文字以内で入力してください')
+      expect(category.errors[:category_name]).to include('は20文字以下に設定して下さい。')
     end
     it 'imageが空では登録できないこと' do
       category = build(:category, image: nil)
       category.valid?
-      expect(category.errors[:image]).to include('を入力してください')
+      expect(category.errors[:image]).to include('が入力されていません。')
     end
     it 'category_nameが20文字以内かつ、imageが存在すれば登録できること' do
       category = build(:category, category_name: 'アイウエオアイウエオアイウエオアイウエオ')

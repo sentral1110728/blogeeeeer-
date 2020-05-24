@@ -54,11 +54,11 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:password]).to include('は128文字以下に設定して下さい。')
   end
-  it 'passwordに全角文字が含まれていれば、登録できないこと' do
-    user = build(:user, password: 'パスワード入力', password_confirmation: 'パスワード入力')
-    user.valid?
-    expect(user.errors[:password]).to include('は有効でありません。')
-  end
+  # it 'passwordに全角文字が含まれていれば、登録できないこと' do
+  #   user = build(:user, password: 'パスワード入力', password_confirmation: 'パスワード入力')
+  #   user.valid?
+  #   expect(user.errors[:password]).to include('は有効でありません。')
+  # end
   it 'passwordとpassword_confirmationが違う値の場合、登録できないこと' do
     user = build(:user, password: 'password', password_confirmation: 'wrongPassword')
     user.valid?
